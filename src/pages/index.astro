@@ -1,0 +1,9 @@
+---
+import Base from '../layouts/Base.astro';
+import { site } from '../config/site';
+---
+
+<Base title={site.name} description={site.description}>
+  <h1>{site.name}</h1>
+  <p>Written by {site.author}.</p>
+</Base>

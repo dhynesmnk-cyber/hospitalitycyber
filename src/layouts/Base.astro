@@ -1,0 +1,37 @@
+---
+import { site } from '../config/site';
+
+interface Props {
+  title: string;
+  description: string;
+  noindex?: boolean;
+}
+
+const { title, description, noindex = false } = Astro.props;
+const canonical = new URL(Astro.url.pathname, Astro.site);
+const indexable = site.indexable && !noindex;
+---
+
+<!doctype html>
+<html lang="en-AU">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
+    {!indexable && <meta name="robots" content="noindex" />}
+  </head>
+  <body>
+    <a href="#main">Skip to content</a>
+    <header>
+      <a href="/">{site.name}</a>
+    </header>
+    <main id="main">
+      <slot />
+    </main>
+    <footer>
+      <p>Written by {site.author}. <a href={site.portfolioUrl}>Other work</a>. <a href={`mailto:${site.email}`}>{site.email}</a></p>
+    </footer>
+  </body>
+</html>

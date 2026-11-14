@@ -1,0 +1,19 @@
+# Build output and tooling
+node_modules/
+dist/
+.astro/
+.netlify/
+.env
+.env.*
+
+# Design proposals are reviewed locally or on a preview, not kept on main
+proposals/
+
+# Unpublished drafts render locally and are never pushed
+*.draft.md
+
+# Working files that do not belong in a public repo
+_work/
+internal/
+TODO-*.md
+DECISIONS.md
