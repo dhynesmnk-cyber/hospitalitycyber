@@ -1,0 +1,36 @@
+/* Colours. Light by default; dark follows the reader's system setting until the reader chooses
+   with the switch in the header (the choice sets data-theme on <html>).
+   Every text colour pair clears WCAG AA (4.5:1), and the field border clears 3:1. */
+:root {
+  color-scheme: light dark;
+  --paper: #F5EFE3;
+  --panel: #EBE3D2;
+  --ink: #1E1A16;
+  --soft: #5A5148;
+  --rule: #CFC4AE;
+  --accent: #7B1E2B;
+  --on-accent: #F5EFE3;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    color-scheme: dark;
+    --paper: #1B1714;
+    --panel: #25201B;
+    --ink: #EDE5D6;
+    --soft: #B5AB9A;
+    --rule: #3A332C;
+    --accent: #D98C92;
+    --on-accent: #1B1714;
+  }
+}
+:root[data-theme="light"] { color-scheme: light; }
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  --paper: #1B1714;
+  --panel: #25201B;
+  --ink: #EDE5D6;
+  --soft: #B5AB9A;
+  --rule: #3A332C;
+  --accent: #D98C92;
+  --on-accent: #1B1714;
+}

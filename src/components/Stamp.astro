@@ -1,0 +1,12 @@
+---
+import { isoDate, longDate } from '../lib/format';
+
+interface Props {
+  word: string;
+  date: Date;
+}
+
+const { word, date } = Astro.props;
+---
+
+<p class="stamp"><span class="stamp-word">{word}</span> <time datetime={isoDate(date)}>{longDate(date)}</time></p>

@@ -1,9 +1,68 @@
 ---
 import Base from '../layouts/Base.astro';
+import Signup from '../components/Signup.astro';
+import Stamp from '../components/Stamp.astro';
 import { site } from '../config/site';
+import { getWriting } from '../lib/content';
+
+const [latest] = await getWriting();
+
+// What the reader needs from an AI decision. David's wording, 15 November 2026, put in the
+// second person ("you") at his request on 16 November 2026.
+const needs = [
+  'Payback you can put a number on, fast enough to defend to the board',
+  'Certainty your group owns and can move the data the AI runs on',
+  'Confidence your AI lead hire will deliver in the first 90 days',
+  'Leverage in vendor negotiations, so you buy from knowledge rather than a demo',
+  'A dated paper trail showing you made the decision carefully',
+];
 ---
 
-<Base title={site.name} description={site.description}>
-  <h1>{site.name}</h1>
-  <p>Written by {site.author}.</p>
+<Base
+  title="Good Potatoes, by David Hynes"
+  description="Judge AI like any other spend: return, risk, evidence. A working read for CEOs and AI strategy leads."
+>
+  <section class="masthead">
+    <div class="wrap">
+      <h1>Judge AI like any other spend: return, risk, evidence.</h1>
+      <p class="dek">A working read for CEOs and AI strategy leads.</p>
+      <p class="byline">{site.byline}</p>
+    </div>
+  </section>
+
+  <div class="wrap bands">
+    <section class="band needs" aria-labelledby="needs-h">
+      <h2 class="label" id="needs-h">What you need from AI spend</h2>
+      <div class="band-main">
+        <ul class="points needs-list" role="list">
+          {needs.map((line) => <li><p>{line}</p></li>)}
+        </ul>
+      </div>
+    </section>
+
+    {
+      latest && (
+        <section class="band latest" aria-labelledby="latest-h">
+          <h2 class="label" id="latest-h">Latest</h2>
+          <article class="band-main lead-piece">
+            <h3 class="lead-title">
+              <a href={`/writing/${latest.id}/`}>{latest.data.title}</a>
+            </h3>
+            <Stamp word={latest.data.draft ? 'Draft' : 'Read'} date={latest.data.pubDate} />
+            <p class="excerpt">{latest.data.description}</p>
+            <p class="more">
+              <a href={`/writing/${latest.id}/`}>
+                Read the piece<span class="visually-hidden">: {latest.data.title}</span>
+              </a>
+            </p>
+          </article>
+        </section>
+      )
+    }
+
+    <section class="band newsletter" aria-labelledby="news-h">
+      <h2 class="label" id="news-h">Newsletter</h2>
+      <Signup id="email-home" />
+    </section>
+  </div>
 </Base>

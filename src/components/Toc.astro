@@ -1,0 +1,23 @@
+---
+interface Props {
+  label: string;
+  items: { slug: string; text: string }[];
+}
+
+const { label, items } = Astro.props;
+---
+
+<nav class="toc toc-rail" aria-label={label}>
+  <p class="toc-label">{label}</p>
+  <ol role="list">
+    {items.map((item) => <li><a href={`#${item.slug}`}>{item.text}</a></li>)}
+  </ol>
+</nav>
+<nav class="toc toc-fold" aria-label={`${label}, folded`}>
+  <details>
+    <summary>{label}</summary>
+    <ol role="list">
+      {items.map((item) => <li><a href={`#${item.slug}`}>{item.text}</a></li>)}
+    </ol>
+  </details>
+</nav>

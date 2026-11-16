@@ -1,15 +1,38 @@
 ---
+import '../styles/tokens.css';
+import '../styles/site.css';
 import { site } from '../config/site';
+
+type Section = 'writing' | 'chapters' | 'about' | 'newsletter';
 
 interface Props {
   title: string;
   description: string;
   noindex?: boolean;
+  current?: Section;
 }
 
-const { title, description, noindex = false } = Astro.props;
+const { title, description, noindex = false, current } = Astro.props;
 const canonical = new URL(Astro.url.pathname, Astro.site);
 const indexable = site.indexable && !noindex;
+
+// Under 60 characters. Add the site name only when it fits.
+const withSite = `${title} | ${site.name}`;
+const titleTag = title.includes(site.name) ? title : withSite.length < 60 ? withSite : title;
+
+const nav: { label: string; href: string; id: Section }[] = [
+  { label: 'Writing', href: '/writing/', id: 'writing' },
+  { label: 'Hospitality Tools Resource', href: '/chapters/', id: 'chapters' },
+  { label: 'About', href: '/about/', id: 'about' },
+  { label: 'Newsletter', href: '/newsletter/', id: 'newsletter' },
+];
+const footerNav = [
+  { label: 'About', href: '/about/' },
+  { label: 'Newsletter', href: '/newsletter/' },
+  { label: 'Privacy', href: '/privacy/' },
+  { label: 'Updates', href: '/updates/' },
+];
+const isHome = Astro.url.pathname === '/';
 ---
 
 <!doctype html>
@@ -17,21 +40,92 @@ const indexable = site.indexable && !noindex;
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>{title}</title>
+    <title>{titleTag}</title>
     <meta name="description" content={description} />
     <link rel="canonical" href={canonical} />
     {!indexable && <meta name="robots" content="noindex" />}
+    <script is:inline>
+      // Apply a saved colour choice before the page paints, so there is no flash.
+      try {
+        var saved = localStorage.getItem('theme');
+        if (saved === 'light' || saved === 'dark') document.documentElement.setAttribute('data-theme', saved);
+      } catch (e) {}
+    </script>
+    <link rel="preload" href="/fonts/newsreader-roman.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href="/fonts/libre-franklin-roman.woff2" as="font" type="font/woff2" crossorigin />
   </head>
   <body>
-    <a href="#main">Skip to content</a>
-    <header>
-      <a href="/">{site.name}</a>
+    <a class="skip" href="#main">Skip to content</a>
+    <header class="site-head">
+      <div class="wrap">
+        <a class="nameplate" href="/" aria-current={isHome ? 'page' : undefined}>{site.name}</a>
+        <nav aria-label="Main">
+          <ul role="list">
+            {
+              nav.map((item) => (
+                <li>
+                  <a href={item.href} aria-current={current === item.id ? 'page' : undefined}>
+                    {item.label}
+                  </a>
+                </li>
+              ))
+            }
+            <li class="theme-li" hidden>
+              <div class="theme-switch" role="group" aria-label="Colour mode">
+                <button type="button" data-theme-set="light" aria-pressed="false">Light</button>
+                <button type="button" data-theme-set="dark" aria-pressed="false">Dark</button>
+              </div>
+            </li>
+          </ul>
+        </nav>
+      </div>
     </header>
+
     <main id="main">
       <slot />
     </main>
-    <footer>
-      <p>Written by {site.author}. <a href={site.portfolioUrl}>Other work</a>. <a href={`mailto:${site.email}`}>{site.email}</a></p>
+
+    <footer class="site-foot">
+      <div class="wrap">
+        <p class="foot-line">Written by {site.author}. One person, no sponsors, no affiliate links.</p>
+        <nav aria-label="Footer">
+          <ul role="list">
+            {footerNav.map((item) => <li><a href={item.href}>{item.label}</a></li>)}
+          </ul>
+        </nav>
+        <p class="foot-contact">
+          Email <a href={`mailto:${site.email}`}>{site.email}</a>. My other work is at <a href={site.portfolioUrl} rel="noopener">davehynes.netlify.app</a>.
+        </p>
+      </div>
     </footer>
+    <script is:inline>
+      // The switch needs JavaScript, so it stays hidden without it. The choice is kept in this
+      // browser only (localStorage). It is never sent anywhere.
+      (function () {
+        var root = document.documentElement;
+        var li = document.querySelector('.theme-li');
+        var buttons = document.querySelectorAll('[data-theme-set]');
+        var query = window.matchMedia('(prefers-color-scheme: dark)');
+        if (!li || !buttons.length) return;
+        function current() {
+          return root.getAttribute('data-theme') || (query.matches ? 'dark' : 'light');
+        }
+        function sync() {
+          var c = current();
+          buttons.forEach(function (b) { b.setAttribute('aria-pressed', String(b.getAttribute('data-theme-set') === c)); });
+        }
+        buttons.forEach(function (b) {
+          b.addEventListener('click', function () {
+            var t = b.getAttribute('data-theme-set');
+            root.setAttribute('data-theme', t);
+            try { localStorage.setItem('theme', t); } catch (e) {}
+            sync();
+          });
+        });
+        if (query.addEventListener) query.addEventListener('change', sync);
+        li.hidden = false;
+        sync();
+      })();
+    </script>
   </body>
 </html>

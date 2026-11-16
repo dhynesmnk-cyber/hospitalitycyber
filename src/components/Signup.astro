@@ -1,0 +1,23 @@
+---
+import { site } from '../config/site';
+
+interface Props {
+  id: string;
+  line?: string;
+}
+
+const { id, line = site.signupLine } = Astro.props;
+const live = site.newsletter.formUrl !== '';
+---
+
+<div class="band-main signup-box">
+  <p class="signup-line">{line}</p>
+  <form class="signup" action={live ? site.newsletter.formUrl : undefined} method="post" target={live ? '_blank' : undefined}>
+    <label for={id}>Email address</label>
+    <div class="signup-row">
+      <input id={id} name="email" type="email" autocomplete="email" required disabled={!live} />
+      <button type="submit" disabled={!live}>Subscribe, free</button>
+    </div>
+    {!live && <p class="signup-note">Signup opens when the newsletter is set up.</p>}
+  </form>
+</div>

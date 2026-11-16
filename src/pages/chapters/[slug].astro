@@ -1,0 +1,71 @@
+---
+import { render } from 'astro:content';
+import Piece from '../../layouts/Piece.astro';
+import ChapterList from '../../components/ChapterList.astro';
+import { site } from '../../config/site';
+import { chapterNumber, getChapters, getWriting } from '../../lib/content';
+import { longDate } from '../../lib/format';
+
+export async function getStaticPaths() {
+  const entries = await getChapters();
+  return entries.map((entry) => ({ params: { slug: entry.id }, props: { entry } }));
+}
+
+const { entry } = Astro.props;
+const { Content, headings } = await render(entry);
+const no = chapterNumber(entry.data.number);
+
+const related = (await getChapters()).filter((c) => entry.data.related.includes(chapterNumber(c.data.number)));
+const referredIn = (await getWriting()).filter((p) => p.data.chapters.includes(no));
+const url = new URL(`/chapters/${entry.id}/`, Astro.site).href;
+---
+
+<Piece
+  kind="chapter"
+  title={entry.data.title}
+  description={entry.data.description}
+  noindex={entry.data.noindex || entry.data.draft}
+  label="Hospitality Tools Resource"
+  labelHref="/chapters/"
+  chapterNo={no}
+  stampWord="As at"
+  stampDate={entry.data.asOf}
+  tocLabel="In this chapter"
+  headings={headings}
+  sources={entry.data.sources}
+  badge={entry.data.status === 'background-verify' ? 'Background chapter' : undefined}
+>
+  <Content />
+
+  <section slot="end" class="cite" aria-labelledby="cite-h">
+    <h2 class="label" id="cite-h">Cite this chapter</h2>
+    <p>
+      {site.author}, “{entry.data.title}”, chapter {no} of the Hospitality Tools Resource, {site.name}. Facts as at {longDate(entry.data.asOf)}. {url}
+    </p>
+  </section>
+
+  <Fragment slot="after">
+    {
+      related.length > 0 && (
+        <section class="band" aria-labelledby="rel-h">
+          <h2 class="label" id="rel-h">Related chapters</h2>
+          <div class="band-main"><ChapterList chapters={related} /></div>
+        </section>
+      )
+    }
+    {
+      referredIn.length > 0 && (
+        <section class="band" aria-labelledby="in-h">
+          <h2 class="label" id="in-h">Referred to in</h2>
+          {
+            referredIn.map((p) => (
+              <article class="band-main lead-piece">
+                <h3 class="lead-title"><a href={`/writing/${p.id}/`}>{p.data.title}</a></h3>
+              </article>
+            ))
+          }
+        </section>
+      )
+    }
+  </Fragment>
+</Piece>

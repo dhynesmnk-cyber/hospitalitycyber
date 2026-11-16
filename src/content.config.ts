@@ -3,8 +3,8 @@ import { glob } from 'astro/loaders';
 // Zod comes from Astro's own copy. Do not add `zod` to package.json.
 import { z } from 'astro/zod';
 
-// Shared by every page type. `draft` keeps an entry out of production builds.
-// `noindex` publishes it with a noindex robots tag.
+// Shared by every page type. `draft` keeps an entry out of every list and out of production
+// builds. `noindex` publishes it with a noindex robots tag.
 const page = {
   title: z.string().max(60),
   description: z.string().max(155),
@@ -12,12 +12,31 @@ const page = {
   noindex: z.boolean().default(false),
 };
 
+// One source per numbered reference. The body cites it as [^1], [^2] and so on, in the order
+// listed here. `dated` is the date the document gives itself, in the document's own words.
+// `accessed` is the day it was read.
+const source = z.object({
+  title: z.string(),
+  // A shorter name for the margin note. Falls back to the title.
+  short: z.string().optional(),
+  publisher: z.string(),
+  url: z.url(),
+  section: z.string().optional(),
+  dated: z.string(),
+  accessed: z.coerce.date(),
+});
+
 const writing = defineCollection({
   loader: glob({ base: './src/content/writing', pattern: '**/*.md' }),
   schema: z.object({
     ...page,
     pubDate: z.coerce.date(),
     updatedDate: z.coerce.date().optional(),
+    // The line under the headline. Falls back to the description.
+    standfirst: z.string().optional(),
+    // Chapter numbers this piece leans on, such as ['05']. Shown after the piece as background.
+    chapters: z.array(z.string()).default([]),
+    sources: z.array(source).default([]),
   }),
 });
 
@@ -35,16 +54,9 @@ const chapters = defineCollection({
     // `background-verify` chapters show a "Background chapter" label.
     status: z.enum(['sourced', 'background-verify']),
     asOf: z.coerce.date(),
-    sources: z
-      .array(
-        z.object({
-          title: z.string(),
-          publisher: z.string(),
-          url: z.url(),
-          accessed: z.coerce.date(),
-        }),
-      )
-      .default([]),
+    // Chapter numbers of related chapters, such as ['02', '11'].
+    related: z.array(z.string()).default([]),
+    sources: z.array(source).default([]),
   }),
 });
 

@@ -1,9 +1,16 @@
 ---
 import Base from '../layouts/Base.astro';
-import { site } from '../config/site';
 ---
 
-<Base title={`Page not found | ${site.name}`} description="This page does not exist." noindex>
-  <h1>Page not found</h1>
-  <p><a href="/">Back to the home page</a></p>
+<Base title="Page not found" description="That page does not exist." noindex>
+  <header class="plain-head">
+    <div class="wrap"><h1>Page not found</h1></div>
+  </header>
+  <div class="wrap plain-body">
+    <div class="md">
+      <p>
+        That address does not lead anywhere. Try the <a href="/">home page</a>, the <a href="/writing/">writing</a> or the <a href="/chapters/">Hospitality Tools Resource</a>.
+      </p>
+    </div>
+  </div>
 </Base>

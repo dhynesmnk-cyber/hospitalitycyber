@@ -1,0 +1,109 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import Base from './Base.astro';
+import Toc from '../components/Toc.astro';
+import Stamp from '../components/Stamp.astro';
+import { site } from '../config/site';
+import { isoDate, longDate } from '../lib/format';
+
+type Source = CollectionEntry<'writing'>['data']['sources'][number];
+
+interface Props {
+  kind: 'writing' | 'chapter';
+  title: string;
+  description: string;
+  standfirst?: string;
+  noindex?: boolean;
+  label: string;
+  labelHref: string;
+  chapterNo?: string;
+  stampWord: string;
+  stampDate: Date;
+  tocLabel: string;
+  headings: { slug: string; text: string; depth: number }[];
+  sources: Source[];
+  badge?: string;
+}
+
+const {
+  kind,
+  title,
+  description,
+  standfirst = description,
+  noindex = false,
+  label,
+  labelHref,
+  chapterNo,
+  stampWord,
+  stampDate,
+  tocLabel,
+  headings,
+  sources,
+  badge,
+} = Astro.props;
+
+const tocItems = [
+  ...headings.filter((h) => h.depth === 2).map((h) => ({ slug: h.slug, text: h.text })),
+  { slug: 'sources', text: 'Sources' },
+];
+---
+
+<Base title={title} description={description} noindex={noindex} current={kind === 'writing' ? 'writing' : 'chapters'}>
+  <article class={`piece ${kind}`}>
+    <header class="piece-head">
+      <div class="wrap">
+        <p class="label"><a href={labelHref}>{label}</a></p>
+        {
+          chapterNo && (
+            <p class="chapter-no">
+              <span class="chapter-word">Chapter</span> <span class="chapter-num">{chapterNo}</span>
+            </p>
+          )
+        }
+        <div class="head-main">
+          <h1>{title}</h1>
+          <p class="standfirst">{standfirst}</p>
+        </div>
+        <div class="meta">
+          <p class="by">By {site.author}</p>
+          <Stamp word={stampWord} date={stampDate} />
+          {badge && <p class="stamp">{badge}</p>}
+        </div>
+      </div>
+    </header>
+
+    <div class="piece-body">
+      <div class="wrap">
+        <Toc label={tocLabel} items={tocItems} />
+        <div class="prose">
+          <div class="md"><slot /></div>
+
+          <section class="sources" aria-labelledby="sources">
+            <h2 id="sources">Sources</h2>
+            {
+              sources.length === 0 ? (
+                <p class="placeholder">No sources are listed for this page yet.</p>
+              ) : (
+                <ol class="source-list" role="list">
+                  {sources.map((s, i) => (
+                    <li id={`src-${i + 1}`}>
+                      {s.publisher}, <cite><a href={s.url} rel="noopener">{s.title}</a></cite>
+                      {s.section ? `, ${s.section}` : ''}. {s.dated}. Read{' '}
+                      <time datetime={isoDate(s.accessed)}>{longDate(s.accessed)}</time>.
+                    </li>
+                  ))}
+                </ol>
+              )
+            }
+          </section>
+
+          <slot name="end" />
+        </div>
+      </div>
+    </div>
+  </article>
+
+  <div class="wrap bands after">
+    <slot name="after" />
+  </div>
+</Base>

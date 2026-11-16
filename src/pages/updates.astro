@@ -1,0 +1,41 @@
+---
+import { render } from 'astro:content';
+import Base from '../layouts/Base.astro';
+import { getUpdates } from '../lib/content';
+import { isoDate, longDate } from '../lib/format';
+
+const updates = await getUpdates();
+const rendered = await Promise.all(
+  updates.map(async (u) => ({ entry: u, Content: (await render(u)).Content })),
+);
+---
+
+<Base
+  title="Updates"
+  description="A dated log of corrections to what David Hynes has published on Good Potatoes."
+>
+  <header class="plain-head">
+    <div class="wrap"><h1>Updates</h1></div>
+  </header>
+  <div class="wrap plain-body">
+    <p class="empty">
+      A dated log of corrections to what I have published. If I have misread something, email me and I will correct it
+      here with the date.
+    </p>
+    {
+      rendered.length === 0 ? (
+        <p class="empty">No corrections yet.</p>
+      ) : (
+        rendered.map(({ entry, Content }) => (
+          <article class="update">
+            <p class="stamp">
+              <time datetime={isoDate(entry.data.date)}>{longDate(entry.data.date)}</time>
+            </p>
+            <h2>{entry.data.title}</h2>
+            <div class="md"><Content /></div>
+          </article>
+        ))
+      )
+    }
+  </div>
+</Base>

@@ -1,0 +1,49 @@
+---
+import Base from '../layouts/Base.astro';
+import { site } from '../config/site';
+import { isoDate, longDate } from '../lib/format';
+
+// Change this date whenever the text below changes.
+const changed = new Date('2026-11-16');
+---
+
+<Base
+  title="Privacy"
+  description="What this site does with information about you. No cookies, no analytics, and where your email address goes if you subscribe or write."
+>
+  <header class="plain-head">
+    <div class="wrap"><h1>Privacy</h1></div>
+  </header>
+  <div class="wrap plain-body">
+    <div class="md">
+      <p>
+        This page says what this site does with information about you. Last changed
+        <time datetime={isoDate(changed)}>{longDate(changed)}</time>.
+      </p>
+
+      <h2>This site</h2>
+      <p>
+        The site sets no cookies, runs no analytics and loads nothing from other companies. If you choose light or dark
+        with the switch at the top of the page, your browser remembers that choice on your device. It is not sent
+        anywhere. If any of this changes, I will change this page and date it.
+      </p>
+
+      <h2>Hosting</h2>
+      <p>
+        Netlify hosts the site. Like any host, it may keep server logs, such as IP addresses and the pages requested.
+        Its own <a href="https://www.netlify.com/privacy/" rel="noopener">privacy policy</a> covers those logs.
+      </p>
+
+      <h2>The newsletter</h2>
+      <p>
+        The signup box sends your email address to Substack, which sends the newsletter. Substack’s <a href="https://substack.com/privacy" rel="noopener">privacy policy</a> covers what it holds.
+      </p>
+
+      <h2>Email to me</h2>
+      <p>
+        If you email me at <a href={`mailto:${site.email}`}>{site.email}</a>, I get your address and what you write. I use
+        it to reply and for nothing else.
+      </p>
+    </div>
+  </div>
+</Base>

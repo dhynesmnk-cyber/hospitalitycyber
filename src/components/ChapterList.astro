@@ -1,0 +1,33 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import { chapterNumber } from '../lib/content';
+import { isoDate, longDate } from '../lib/format';
+
+interface Props {
+  chapters: CollectionEntry<'chapters'>[];
+  heading?: 'h2' | 'h3';
+}
+
+const { chapters, heading: Heading = 'h3' } = Astro.props;
+---
+
+<ol class="chapter-list" role="list">
+  {
+    chapters.map((c) => (
+      <li>
+        <span class="num" aria-hidden="true">{chapterNumber(c.data.number)}</span>
+        <div class="entry">
+          <Heading class="title">
+            <a href={`/chapters/${c.id}/`}>
+              <span class="visually-hidden">Chapter {chapterNumber(c.data.number)}: </span>{c.data.title}
+            </a>
+          </Heading>
+          <p class="asat">
+            As at <time datetime={isoDate(c.data.asOf)}>{longDate(c.data.asOf)}</time>
+          </p>
+          <p class="dek">{c.data.description}</p>
+        </div>
+      </li>
+    ))
+  }
+</ol>

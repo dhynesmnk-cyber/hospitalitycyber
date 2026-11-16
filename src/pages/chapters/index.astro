@@ -1,0 +1,30 @@
+---
+import Base from '../../layouts/Base.astro';
+import ChapterList from '../../components/ChapterList.astro';
+import { getChapters } from '../../lib/content';
+
+const chapters = await getChapters();
+---
+
+<Base
+  title="Hospitality Tools Resource"
+  description="A working resource on the tools used to run hospitality businesses in Australia: history, the current market and the next three years."
+  current="chapters"
+>
+  <header class="plain-head">
+    <div class="wrap"><h1>Hospitality Tools Resource</h1></div>
+  </header>
+  <div class="wrap plain-body">
+    <p class="band-intro">
+      A working resource on the tools used to run hospitality businesses in Australia: history, the current market and
+      the next three years. Each chapter lists its sources and the date they were read.
+    </p>
+    {
+      chapters.length === 0 ? (
+        <p class="empty">No chapters are published yet.</p>
+      ) : (
+        <ChapterList chapters={chapters} heading="h2" />
+      )
+    }
+  </div>
+</Base>

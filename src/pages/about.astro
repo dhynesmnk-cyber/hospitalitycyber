@@ -1,0 +1,44 @@
+---
+import Base from '../layouts/Base.astro';
+import { site } from '../config/site';
+import { getWriting } from '../lib/content';
+
+// The sentence about issue one appears only once there is a piece to point at.
+const [latest] = await getWriting();
+---
+
+<Base
+  title="About"
+  description="David Hynes reads the terms behind the AI and software in hospitality venues and writes down what they say about a group's data."
+  current="about"
+>
+  <header class="plain-head">
+    <div class="wrap"><h1>About</h1></div>
+  </header>
+  <div class="wrap plain-body">
+    <div class="md">
+      <p>
+        I am David Hynes, in Melbourne. I read the terms and price lists behind the AI and software that run hospitality
+        venues, and I write down what they say about a group’s data, its fees and what it costs to leave. I quote the
+        clause and date the page, because vendors change both.
+      </p>
+      {
+        latest && (
+          <p>
+            Issue one covers Square: what its terms leave to you, and what comes out of it as CSV.
+          </p>
+        )
+      }
+      <p>
+        I have no sponsors and no affiliate links. If I misread a clause, tell me and I will correct it and <a href="/updates/">date the correction</a>.
+      </p>
+      <p>
+        You should know my interest. I am looking for a Head of AI role at a larger hospitality or food and beverage
+        group, and I lean towards groups keeping their data in their own hands. Weigh what I write with that in mind.
+      </p>
+      <p>
+        If you run AI or operations at a group and want to talk, email me: <a href={`mailto:${site.email}`}>{site.email}</a>. My other work is at <a href={site.portfolioUrl} rel="noopener">{site.portfolioUrl}</a>
+      </p>
+    </div>
+  </div>
+</Base>
