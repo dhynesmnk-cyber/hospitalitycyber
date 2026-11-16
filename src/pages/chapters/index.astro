@@ -4,11 +4,22 @@ import ChapterList from '../../components/ChapterList.astro';
 import { getChapters } from '../../lib/content';
 
 const chapters = await getChapters();
+
+// The four themes, in reading order. A theme with no published chapter is left out.
+const themes = [
+  { id: 'foundations', label: 'Foundations', note: 'How the tool stacks differ, who holds the power, and where the risks start.' },
+  { id: 'running-the-business', label: 'Running the business', note: 'The systems behind a shift: payments, payroll, bookings, guest data, hiring and contracts.' },
+  { id: 'venues-money-and-property', label: 'Venues, money and property', note: 'Building, renovating, financing and letting a venue.' },
+  { id: 'brand-culture-and-safety', label: 'Brand, culture and safety', note: 'Design, naming, media, local relevance and safety.' },
+] as const;
+const groups = themes
+  .map((t) => ({ ...t, items: chapters.filter((c) => c.data.theme === t.id) }))
+  .filter((g) => g.items.length > 0);
 ---
 
 <Base
   title="Hospitality Tools Resource"
-  description="A working resource on the tools used to run hospitality businesses in Australia: history, the current market and the next three years."
+  description="Reference chapters on the software and platforms behind Australian hospitality venues, each with its sources and the day they were read."
   current="chapters"
 >
   <header class="plain-head">
@@ -16,14 +27,20 @@ const chapters = await getChapters();
   </header>
   <div class="wrap plain-body">
     <p class="band-intro">
-      A working resource on the tools used to run hospitality businesses in Australia: history, the current market and
-      the next three years. Each chapter lists its sources and the date they were read.
+      Reference chapters on the software and platforms behind Australian venues. Each one lists its sources and the day I
+      read them. For one claim at a time, read the <a href="/writing/">writing</a>.
     </p>
     {
-      chapters.length === 0 ? (
+      groups.length === 0 ? (
         <p class="empty">No chapters are published yet.</p>
       ) : (
-        <ChapterList chapters={chapters} heading="h2" />
+        groups.map((g) => (
+          <section class="theme" aria-labelledby={`theme-${g.id}`}>
+            <h2 class="theme-h" id={`theme-${g.id}`}>{g.label}</h2>
+            <p class="theme-note">{g.note}</p>
+            <ChapterList chapters={g.items} heading="h3" />
+          </section>
+        ))
       )
     }
   </div>

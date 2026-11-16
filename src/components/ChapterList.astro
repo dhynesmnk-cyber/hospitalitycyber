@@ -21,6 +21,7 @@ const { chapters, heading: Heading = 'h3' } = Astro.props;
             <a href={`/chapters/${c.id}/`}>
               <span class="visually-hidden">Chapter {chapterNumber(c.data.number)}: </span>{c.data.title}
             </a>
+            {c.data.status === 'background-verify' && <span class="tag">Background chapter</span>}
           </Heading>
           <p class="asat">
             As at <time datetime={isoDate(c.data.asOf)}>{longDate(c.data.asOf)}</time>

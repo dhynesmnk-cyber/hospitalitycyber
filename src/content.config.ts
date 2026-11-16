@@ -34,6 +34,12 @@ const writing = defineCollection({
     updatedDate: z.coerce.date().optional(),
     // The line under the headline. Falls back to the description.
     standfirst: z.string().optional(),
+    // `brief` is 600 to 1,000 words, one claim. `deep-dive` is 2,000 to 3,500. scripts/lint-copy.mjs
+    // holds each piece to its tier.
+    tier: z.enum(['brief', 'deep-dive']),
+    // The TL;DR, in plain language, exactly three lines. The first is the key takeaway: what the
+    // author thinks it means, starting "My read:". The other two are the plain facts behind it.
+    tldr: z.array(z.string().min(1)).length(3),
     // Chapter numbers this piece leans on, such as ['05']. Shown after the piece as background.
     chapters: z.array(z.string()).default([]),
     sources: z.array(source).default([]),

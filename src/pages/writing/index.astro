@@ -1,6 +1,7 @@
 ---
 import Base from '../../layouts/Base.astro';
 import Stamp from '../../components/Stamp.astro';
+import Tldr from '../../components/Tldr.astro';
 import { getWriting } from '../../lib/content';
 
 const pieces = await getWriting();
@@ -15,19 +16,34 @@ const pieces = await getWriting();
     <div class="wrap"><h1>Writing</h1></div>
   </header>
   <div class="wrap plain-body">
+    <p class="band-intro indent">
+      Each piece makes one claim about one vendor, from that vendor’s own documents. It quotes them word for word, with
+      the date, and ends with something you can paste into an email to the vendor.
+    </p>
     {
       pieces.length === 0 ? (
-        <p class="empty">Nothing is published here yet.</p>
+        <p class="empty indent">Nothing is published here yet.</p>
       ) : (
-        pieces.map((p) => (
-          <article class="band lead-piece">
-            <h2 class="lead-title">
-              <a href={`/writing/${p.id}/`}>{p.data.title}</a>
-            </h2>
-            <Stamp word={p.data.draft ? 'Draft' : 'Read'} date={p.data.pubDate} />
-            <p class="excerpt">{p.data.description}</p>
-          </article>
-        ))
+        <div class="piece-list">
+          {pieces.map((p) => (
+            <section class="band">
+              <div class="piece-meta">
+                <Stamp word={p.data.draft ? 'Draft' : 'Read'} date={p.data.pubDate} />
+              </div>
+              <article class="band-main lead-piece">
+                <h2 class="lead-title">
+                  <a href={`/writing/${p.id}/`}>{p.data.title}</a>
+                </h2>
+                <Tldr items={p.data.tldr} summary />
+                <p class="more">
+                  <a href={`/writing/${p.id}/`}>
+                    Read the piece<span class="visually-hidden">: {p.data.title}</span>
+                  </a>
+                </p>
+              </article>
+            </section>
+          ))}
+        </div>
       )
     }
   </div>

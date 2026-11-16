@@ -2,6 +2,7 @@
 import type { CollectionEntry } from 'astro:content';
 import Base from './Base.astro';
 import Toc from '../components/Toc.astro';
+import Tldr from '../components/Tldr.astro';
 import Stamp from '../components/Stamp.astro';
 import { site } from '../config/site';
 import { isoDate, longDate } from '../lib/format';
@@ -13,6 +14,7 @@ interface Props {
   title: string;
   description: string;
   standfirst?: string;
+  tldr?: string[];
   noindex?: boolean;
   label: string;
   labelHref: string;
@@ -23,6 +25,7 @@ interface Props {
   headings: { slug: string; text: string; depth: number }[];
   sources: Source[];
   badge?: string;
+  readMinutes?: number;
 }
 
 const {
@@ -30,6 +33,7 @@ const {
   title,
   description,
   standfirst = description,
+  tldr = [],
   noindex = false,
   label,
   labelHref,
@@ -40,6 +44,7 @@ const {
   headings,
   sources,
   badge,
+  readMinutes,
 } = Astro.props;
 
 const tocItems = [
@@ -63,14 +68,23 @@ const tocItems = [
         <div class="head-main">
           <h1>{title}</h1>
           <p class="standfirst">{standfirst}</p>
+          {tldr.length > 0 && <Tldr items={tldr} />}
         </div>
         <div class="meta">
           <p class="by">By {site.author}</p>
           <Stamp word={stampWord} date={stampDate} />
+          {readMinutes && <p class="read-time">{readMinutes} min read</p>}
           {badge && <p class="stamp">{badge}</p>}
         </div>
       </div>
     </header>
+    {
+      tldr.length > 0 && (
+        <div class="wrap head-rule-wrap">
+          <hr class="head-rule" />
+        </div>
+      )
+    }
 
     <div class="piece-body">
       <div class="wrap">
@@ -80,6 +94,11 @@ const tocItems = [
 
           <section class="sources" aria-labelledby="sources">
             <h2 id="sources">Sources</h2>
+            {kind === 'writing' && sources.length > 0 && (
+              <p class="sources-note">
+                Every quotation in this piece is word for word from these pages. Each entry shows the date it was read.
+              </p>
+            )}
             {
               sources.length === 0 ? (
                 <p class="placeholder">No sources are listed for this page yet.</p>

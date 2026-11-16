@@ -2,9 +2,8 @@
 import { render } from 'astro:content';
 import Piece from '../../layouts/Piece.astro';
 import ChapterList from '../../components/ChapterList.astro';
-import { site } from '../../config/site';
+import Tldr from '../../components/Tldr.astro';
 import { chapterNumber, getChapters, getWriting } from '../../lib/content';
-import { longDate } from '../../lib/format';
 
 export async function getStaticPaths() {
   const entries = await getChapters();
@@ -13,11 +12,17 @@ export async function getStaticPaths() {
 
 const { entry } = Astro.props;
 const { Content, headings } = await render(entry);
+const readMinutes = Math.max(1, Math.round((entry.body ?? '').split(/\s+/).filter(Boolean).length / 230));
 const no = chapterNumber(entry.data.number);
 
-const related = (await getChapters()).filter((c) => entry.data.related.includes(chapterNumber(c.data.number)));
+const all = await getChapters();
+const related = all.filter((c) => entry.data.related.includes(chapterNumber(c.data.number)));
 const referredIn = (await getWriting()).filter((p) => p.data.chapters.includes(no));
-const url = new URL(`/chapters/${entry.id}/`, Astro.site).href;
+
+// Previous and next among the chapters that are published (or visible in a draft view).
+const at = all.findIndex((c) => c.id === entry.id);
+const prev = at > 0 ? all[at - 1] : undefined;
+const next = at >= 0 && at < all.length - 1 ? all[at + 1] : undefined;
 ---
 
 <Piece
@@ -33,18 +38,29 @@ const url = new URL(`/chapters/${entry.id}/`, Astro.site).href;
   tocLabel="In this chapter"
   headings={headings}
   sources={entry.data.sources}
+  readMinutes={readMinutes}
   badge={entry.data.status === 'background-verify' ? 'Background chapter' : undefined}
 >
   <Content />
 
-  <section slot="end" class="cite" aria-labelledby="cite-h">
-    <h2 class="label" id="cite-h">Cite this chapter</h2>
-    <p>
-      {site.author}, “{entry.data.title}”, chapter {no} of the Hospitality Tools Resource, {site.name}. Facts as at {longDate(entry.data.asOf)}. {url}
-    </p>
-  </section>
-
   <Fragment slot="after">
+    {
+      referredIn.length > 0 && (
+        <section class="band" aria-labelledby="in-h">
+          <h2 class="label" id="in-h">Pieces that go deeper</h2>
+          <div class="band-main">
+            {
+              referredIn.map((p) => (
+                <article class="lead-piece">
+                  <h3 class="lead-title"><a href={`/writing/${p.id}/`}>{p.data.title}</a></h3>
+                  <Tldr items={p.data.tldr} summary />
+                </article>
+              ))
+            }
+          </div>
+        </section>
+      )
+    }
     {
       related.length > 0 && (
         <section class="band" aria-labelledby="rel-h">
@@ -54,17 +70,29 @@ const url = new URL(`/chapters/${entry.id}/`, Astro.site).href;
       )
     }
     {
-      referredIn.length > 0 && (
-        <section class="band" aria-labelledby="in-h">
-          <h2 class="label" id="in-h">Referred to in</h2>
+      (prev || next) && (
+        <nav class="pager" aria-label="Previous and next chapter">
           {
-            referredIn.map((p) => (
-              <article class="band-main lead-piece">
-                <h3 class="lead-title"><a href={`/writing/${p.id}/`}>{p.data.title}</a></h3>
-              </article>
-            ))
+            prev ? (
+              <a class="pager-link pager-prev" href={`/chapters/${prev.id}/`}>
+                <span class="pager-dir">Previous chapter</span>
+                <span class="pager-title"><span class="pager-no">{chapterNumber(prev.data.number)}</span> {prev.data.title}</span>
+              </a>
+            ) : (
+              <span />
+            )
           }
-        </section>
+          {
+            next ? (
+              <a class="pager-link pager-next" href={`/chapters/${next.id}/`}>
+                <span class="pager-dir">Next chapter</span>
+                <span class="pager-title"><span class="pager-no">{chapterNumber(next.data.number)}</span> {next.data.title}</span>
+              </a>
+            ) : (
+              <span />
+            )
+          }
+        </nav>
       )
     }
   </Fragment>

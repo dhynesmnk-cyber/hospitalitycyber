@@ -18,16 +18,16 @@ const rendered = await Promise.all(
     <div class="wrap"><h1>Updates</h1></div>
   </header>
   <div class="wrap plain-body">
-    <p class="empty">
-      A dated log of corrections to what I have published. If I have misread something, email me and I will correct it
-      here with the date.
+    <p class="empty indent">
+      A dated log of corrections to what I have published. If I have misread something, email me. Each entry says what
+      I got wrong, what the source says, and the date I changed it.
     </p>
     {
       rendered.length === 0 ? (
-        <p class="empty">No corrections yet.</p>
+        <p class="empty indent">No corrections yet.</p>
       ) : (
         rendered.map(({ entry, Content }) => (
-          <article class="update">
+          <article class="update indent">
             <p class="stamp">
               <time datetime={isoDate(entry.data.date)}>{longDate(entry.data.date)}</time>
             </p>

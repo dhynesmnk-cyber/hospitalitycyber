@@ -1,6 +1,6 @@
 ---
 title: "Big platforms and vendors: who holds the power"
-description: "A few transnational companies sit between you and your guests. They set the price of demand, own the guest data, and change terms with a notice email."
+description: "Delivery apps, booking platforms and POS vendors sit between a venue and its guests. Who they are, who owns whom, and what changed since 2024."
 slug: big-platforms-and-vendors-who-holds-the-power
 number: 2
 theme: foundations
@@ -9,18 +9,17 @@ asOf: 2026-11-16
 draft: false
 related: ['05', '08', '11', '17']
 sources:
-  - title: "Delivering more choice for local restaurants"
-    short: "Uber Eats Australia newsroom"
-    publisher: "Uber Eats"
-    url: "https://www.uber.com/au/en/newsroom/mpfau/"
-    dated: "Published 10 May 2020"
+  - title: "Menulog to shut down Australian operations after two decades"
+    short: "Mediaweek on Menulog"
+    publisher: "Mediaweek"
+    url: "https://www.mediaweek.com.au/news/menulog-to-shut-down-australian-operations-after-two-decades"
+    dated: "Published 12 November 2025"
     accessed: 2026-11-16
-  - title: "Online Safety Amendment (Social Media Minimum Age) Act 2024 (No. 127, 2024)"
-    short: "Social Media Minimum Age Act 2024"
-    publisher: "Federal Register of Legislation"
-    url: "https://www.legislation.gov.au/C2024A00127/asmade"
-    section: "new section 63D of the Online Safety Act 2021"
-    dated: "Assented to 10 December 2024"
+  - title: "Menulog is closing in Australia"
+    short: "University of Sydney on Menulog"
+    publisher: "University of Sydney (The Conversation)"
+    url: "https://www.sydney.edu.au/news-opinion/news/2025/11/14/menulog-is-closing-in-australia.html"
+    dated: "Published 14 November 2025"
     accessed: 2026-11-16
   - title: "American Express Completes Acquisition of Tock"
     short: "American Express on Tock"
@@ -34,72 +33,90 @@ sources:
     url: "https://sevenrooms.com/press/DoorDash-Acquires-SevenRooms/"
     dated: "Published 6 May 2025"
     accessed: 2026-11-16
-  - title: "Menulog to shut down Australian operations after two decades"
-    short: "Mediaweek on Menulog"
-    publisher: "Mediaweek"
-    url: "https://www.mediaweek.com.au/news/menulog-to-shut-down-australian-operations-after-two-decades"
-    dated: "Published 12 November 2025"
+  - title: "Delivering more choice for local restaurants"
+    short: "Uber Eats Australia newsroom"
+    publisher: "Uber Eats"
+    url: "https://www.uber.com/au/en/newsroom/mpfau/"
+    dated: "Published 10 May 2020"
     accessed: 2026-11-16
-  - title: "Menulog is closing in Australia"
-    short: "University of Sydney on Menulog"
-    publisher: "University of Sydney (The Conversation)"
-    url: "https://www.sydney.edu.au/news-opinion/news/2025/11/14/menulog-is-closing-in-australia.html"
-    dated: "Published 14 November 2025"
+  - title: "Online Safety Amendment (Social Media Minimum Age) Act 2024 (No. 127, 2024)"
+    short: "Social Media Minimum Age Act 2024"
+    publisher: "Federal Register of Legislation"
+    url: "https://www.legislation.gov.au/C2024A00127/asmade"
+    section: "new section 63D of the Online Safety Act 2021"
+    dated: "Assented to 10 December 2024"
+    accessed: 2026-11-16
+  - title: "Lightspeed Service Agreement (Australia)"
+    short: "Lightspeed Service Agreement"
+    publisher: "Lightspeed"
+    url: "https://www.lightspeedhq.com/au/legal/lightspeed-service-agreement-au/"
+    section: "clauses 5.3 and 5.4"
+    dated: "Last updated 26 February 2026"
+    accessed: 2026-11-16
+  - title: "Repay your loan"
+    short: "Square, Repay your loan"
+    publisher: "Square Help Centre, Australia"
+    url: "https://squareup.com/help/au/en/article/7467"
+    dated: "No date shown on the page"
     accessed: 2026-11-16
 ---
 
-## Short history
+Menulog stopped taking orders in Australia from midnight on 26 November 2025.[^1] Before it closed, IBISWorld data put Uber Eats at about 54 per cent of the Australian delivery market, Menulog at about 24 per cent and DoorDash at about 15 per cent.[^2] This chapter maps the companies that sit between a venue and its guests, who owns whom, and what the public record shows about their terms.
 
-OTAs took accommodation distribution in the 2000s. Delivery apps did the same to restaurants in the 2010s. Payment and POS consolidation followed. The pattern repeats: the platform offers reach, becomes the default, then raises its take.
+## Who sits between you and your guests
 
-## Now
+| Platform | Sector | What it does for a venue |
+| --- | --- | --- |
+| Booking.com, Expedia | Accommodation | Online booking sites for rooms |
+| Uber Eats, DoorDash | Venues | Delivery orders |
+| OpenTable, Resy, Tock, SevenRooms | Venues | Table bookings and guest records |
+| Google | All | Local search and Maps listings |
+| Meta, TikTok | All | Social reach |
+| Lightspeed, Square, Shift4, Fiserv, Oracle | All | Point-of-sale (POS) systems, payments and property management |
+| Endeavour, Coles, Woolworths | Retail bev | Packaged liquor, in competition with independents on the shelf |
 
-| Platform | Sector | What it controls | Pressure on you |
-| --- | --- | --- | --- |
-| Booking.com, Expedia | Accommodation | Demand and rate parity pressure | Commission and ad costs |
-| Uber Eats, DoorDash | Venues | Delivery demand | Commission |
-| OpenTable, Resy and Tock (American Express), SevenRooms (DoorDash tie) | Venues | Booking flow and guest records | Cover fees, data ownership terms |
-| Google | All | Local search, Maps, booking, AI Mode | Your Business Profile is your front door |
-| Meta, TikTok | All | Social reach | Algorithm changes, under-16 account rules |
-| Endeavour, Coles, Woolworths | Retail bev | Packaged liquor retail | Range, price, convenience |
-| Lightspeed, Square, Shift4, Fiserv, Oracle | All | POS, payments, PMS | Fees, lock-in, integration terms |
+As at November 2026. The table describes what each company does. It is not a ranking and makes no market-share claim.
 
-As at November 2026.
+## Who owns whom
 
-Uber Eats announced a standard commission ceiling of 30 per cent for Australian restaurants in May 2020.[^1] Check your own order form for the rate you pay now. Australian law requires providers of age-restricted social media platforms to take reasonable steps to keep under-16s from holding accounts.[^2] American Express completed its purchase of Tock in October 2024, and Tock now sits alongside Resy in American Express Global Dining.[^3] DoorDash agreed to acquire SevenRooms in May 2025.[^4]
+American Express completed its purchase of Tock on 15 October 2024, and Tock now sits alongside Resy in American Express Global Dining.[^3] DoorDash announced an agreement to acquire SevenRooms on 6 May 2025. I did not check from a primary source that the deal completed.[^4]
 
-Menulog stopped taking orders in Australia from midnight on 26 November 2025.[^5] Before it closed, IBISWorld data put Uber Eats at about 54 per cent of the Australian delivery market, Menulog at about 24 per cent and DoorDash at about 15 per cent.[^6]
+Both deals put a booking platform and its guest records under a payments or delivery company. Chapters 11 and 17 look at what the contracts say about that.
 
-## Next three years
+## What the public record says about their terms
 
-- AI agents (Google AI Mode, Booking Holdings, Expedia) become another gatekeeper.
+Uber Eats announced a standard commission ceiling of 30 per cent for Australian restaurants in May 2020.[^5] I did not find a current Australian rate card I could verify, so check your own order form for the rate you pay now.
 
-- Payments-led platforms take more of the stack. Your POS vendor becomes your bank, lender and payroll provider.
+Australian law requires providers of age-restricted social media platforms to take reasonable steps to keep under-16s from holding accounts.[^6]
 
-- Regulation helps at the edges: the RBA ban, gig worker standards, and Privacy Act reforms change platform behaviour slowly.
+Lightspeed’s Australian service agreement says an eligible customer “must use Lightspeed Payments unless otherwise agreed to by Lightspeed in writing”.[^7] Square’s Australian loans are repaid from a share of sales: “A fixed percentage of your business’s daily card sales is automatically deducted and applied toward your loan balance”.[^8]
 
-## Accommodation vs retail
+My read: POS vendors are selling payments and lending alongside the till. The basis is those two pages. I cannot say how common this is across vendors.
 
-- **Accommodation** is the most exposed. Direct booking share is the lever. Tools: booking engine, metasearch, loyalty, Google Hotel Ads.
+## What a venue can do (my read)
 
-- **Venues** can survive without the delivery apps if margins are thin. Run delivery as a marketing channel with a hard price ceiling, not a revenue line.
+- Own the guest contact details you are allowed to hold: email, SMS and loyalty sign-ups. Where a marketplace brings the guest, the record may not be yours. Chapter 11 quotes one contract clause on this.
 
-- **Retail bev** competes with the platform owner on the shelf. Differentiate by range, advice and events.
+- Track each platform’s share of your revenue every month, and write down the share at which you would act. I have no source for a threshold.
 
-## What owners can do
+- Keep a second route for anything critical: two booking sources, two payment routes. Check what your contract charges for the second route. Lightspeed’s agreement charges a monthly fee for each month a customer processes transactions through another provider.[^7]
 
-- Own the guest relationship: email, SMS, loyalty. Platforms rent you guests.
+## Questions to put in writing
 
-- Read data ownership clauses. SevenRooms, OpenTable and POS vendors differ.
+Send these to each platform or vendor you depend on.
 
-- Keep two of everything critical: two booking sources, two payment routes.
+1. What rate or fee is on our order form today, and what notice will we get before it changes?
 
-- Track platform share of revenue monthly. Over 30 per cent is a dependence problem.
+2. Which of our guest records can we export, and which does the platform keep?
 
-## Risks
+3. If you are sold, or you sell the product we use, what happens to our contract?
 
-- Unilateral term changes. The notice period is the only warning.
+## What this chapter does not show
 
-- Rate parity clauses and price-matching expectations.
+- Delivery market shares after Menulog’s exit. I found no source for them.
 
-- Platform outages, which you cannot fix.
+- Current commission rates. The Uber Eats figure is from 2020.
+
+- Whether the DoorDash and SevenRooms deal completed.
+
+- The terms of Booking.com, Expedia, Google, Meta, TikTok, OpenTable, Resy, Tock or the supermarkets. I did not read them.

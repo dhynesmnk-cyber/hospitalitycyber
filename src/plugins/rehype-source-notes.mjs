@@ -5,6 +5,8 @@
 //
 // The build fails if a reference points at a source that is not listed.
 
+import { SECTION_KINDS } from '../config/sections.mjs';
+
 const MARK = /\[\^(\d+)\]/g;
 
 const long = (value) => {
@@ -29,6 +31,10 @@ function replaceMarks(node, found) {
       let last = 0;
       for (const m of child.value.matchAll(MARK)) {
         if (m.index > last) out.push(text(child.value.slice(last, m.index)));
+        // Two references with no text between them read as 2, 3 and not 23.
+        else if (out.length > 0 && out[out.length - 1].tagName === 'sup') {
+          out.push(el('sup', { className: ['ref-sep'] }, [text(',')]));
+        }
         const n = Number(m[1]);
         found.push(n);
         out.push(
@@ -102,6 +108,34 @@ function stackTable(table) {
   return el('div', { className: ['table-wrap'] }, [table]);
 }
 
+// Wraps the marked sections (see src/config/sections.mjs) in a container, with a one-line kicker
+// above the heading, so the reader can tell the skippable detail and the paste-ready ending apart
+// from the body. A section runs from its heading to the next h2.
+function wrapSections(tree) {
+  const kids = tree.children;
+  const out = [];
+  let i = 0;
+  while (i < kids.length) {
+    const node = kids[i];
+    const kind = node.type === 'element' && node.tagName === 'h2' ? SECTION_KINDS.get(textOf(node).trim()) : undefined;
+    if (!kind) {
+      out.push(node);
+      i += 1;
+      continue;
+    }
+    let j = i + 1;
+    while (j < kids.length && !(kids[j].type === 'element' && kids[j].tagName === 'h2')) j += 1;
+    out.push(
+      el('section', { className: [kind.className] }, [
+        el('p', { className: ['section-kicker'] }, [text(kind.kicker)]),
+        ...kids.slice(i, j),
+      ]),
+    );
+    i = j;
+  }
+  tree.children = out;
+}
+
 export default function rehypeSourceNotes() {
   return (tree, file) => {
     const sources = file.data?.astro?.frontmatter?.sources ?? [];
@@ -111,7 +145,26 @@ export default function rehypeSourceNotes() {
       parent.children.forEach((node, i) => {
         if (node.type !== 'element') return;
         if (node.tagName === 'table') {
-          parent.children[i] = stackTable(node);
+          // References inside table cells work like those in paragraphs. The notes sit under the
+          // table, because a table can run wider than the text column.
+          const found = [];
+          replaceMarks(node, found);
+          for (const n of found) {
+            if (!sources[n - 1]) {
+              throw new Error(`${file.path}: reference [^${n}] has no matching entry in sources.`);
+            }
+          }
+          const fresh = [...new Set(found)].filter((n) => !shown.has(n));
+          const wrapped = stackTable(node);
+          if (fresh.length) {
+            fresh.forEach((n) => shown.add(n));
+            parent.children[i] = el('div', { className: ['noted-table'] }, [
+              wrapped,
+              el('div', { className: ['table-notes'] }, fresh.map((n) => noteFor(n, sources[n - 1]))),
+            ]);
+          } else {
+            parent.children[i] = wrapped;
+          }
         } else if (node.tagName === 'p' && hasMark(node)) {
           const found = [];
           replaceMarks(node, found);
@@ -152,5 +205,7 @@ export default function rehypeSourceNotes() {
         throw new Error(`${file.path}: sources ${orphans.join(', ')} are listed but never cited.`);
       }
     }
+
+    wrapSections(tree);
   };
 }

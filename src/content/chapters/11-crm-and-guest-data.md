@@ -1,6 +1,6 @@
 ---
-title: "CRM and guest data"
-description: "A guest list you own is worth more than any platform listing. It is also a liability if you cannot protect it."
+title: "CRM and guest data: who holds the guest list"
+description: "Guest details sit in your POS, bookings and email. What Quest’s breach and a SevenRooms contract show about who holds them, and the law that applies."
 slug: crm-and-guest-data
 number: 11
 theme: running-the-business
@@ -9,12 +9,30 @@ asOf: 2026-11-16
 draft: false
 related: ['05', '08', '17']
 sources:
-  - title: "Endeavour Group Appendix 4E and Annual Report, year ended 28 June 2026"
-    short: "Endeavour Group FY26 results"
-    publisher: "Endeavour Group (ASX announcement)"
-    url: "https://announcements.asx.com.au/asxpdf/20260824/pdf/07332wjryngb8d.pdf"
-    section: "highlights and pub+ commentary"
-    dated: "Published 24 August 2026"
+  - title: "Official Statement, 19 August 2026"
+    short: "Quest statement, 19 August 2026"
+    publisher: "Quest Apartment Hotels"
+    url: "https://www.questapartments.com.au/update"
+    dated: "Dated 19 August 2026 (PDF on Quest’s update page)"
+    accessed: 2026-11-16
+  - title: "A message from our Managing Director about your privacy and security (official statement, 16 September 2026)"
+    short: "Quest statement, 16 September 2026"
+    publisher: "Quest Apartment Hotels"
+    url: "https://www.questapartments.com.au/update"
+    dated: "Dated 16 September 2026 (PDF on Quest’s update page)"
+    accessed: 2026-11-16
+  - title: "Restaurants Still Own Their Guest Data. Now They Get More From It with DoorDash"
+    short: "SevenRooms blog on guest data"
+    publisher: "SevenRooms (blog)"
+    url: "https://sevenrooms.com/blog/guest-data-sevenrooms/"
+    dated: "Published 18 June 2026"
+    accessed: 2026-11-16
+  - title: "Main Services Agreement"
+    short: "SevenRooms Main Services Agreement"
+    publisher: "SevenRooms"
+    url: "https://sevenrooms.com/msa/"
+    section: "sections 4.2, 4.3 and the definitions"
+    dated: "Updated 4 February 2026"
     accessed: 2026-11-16
   - title: "Spam Act 2003 (No. 129, 2003)"
     short: "Spam Act 2003"
@@ -36,52 +54,81 @@ sources:
     section: "section 6(1), definition of sensitive information"
     dated: "Compilation No. 85, 16 December 2020"
     accessed: 2026-11-16
+  - title: "Endeavour Group Appendix 4E and Annual Report, year ended 28 June 2026"
+    short: "Endeavour Group FY26 results"
+    publisher: "Endeavour Group (ASX announcement)"
+    url: "https://announcements.asx.com.au/asxpdf/20260824/pdf/07332wjryngb8d.pdf"
+    section: "highlights and pub+ commentary"
+    dated: "Published 24 August 2026"
+    accessed: 2026-11-16
 ---
 
-## Short history
+Quest Apartment Hotels’ first statement on its August 2026 data breach said the information “primarily involves names, email addresses, and/or other contact details”.[^1] Its letter of 16 September counted about 1,991,613 customers, including 46,727 credit card numbers with CVV, and said the information “relates to records from before June 2025”.[^2]
 
-Regulars lived in the manager's head, then in a notebook. Email lists and loyalty cards arrived in the 2000s. Reservation platforms (SevenRooms, OpenTable) built guest profiles. POS vendors added loyalty and marketing modules. Privacy law tightened around all of it.
+A customer relationship management (CRM) system is the tool that holds a venue’s guest list. This chapter covers where guest data sits, what one contract says about who owns it, and the law that applies.
 
-## Now
+## Where guest data sits
 
-- **Where guest data lives:** POS (spend), reservation system (preferences, dietary notes), PMS (identity, stay history), email platform (Mailchimp, Klaviyo, Campaign Monitor), loyalty app, and social DMs. Rarely in one place.
+My read: in a venue group the guest record is spread across the POS (spend), the reservation system (preferences and dietary notes), the property management system (identity and stay history), the email platform, the loyalty app and social messages. Reservation and POS vendors pitch unified guest profiles. I did not check how any vendor builds one.
 
-- **Unified guest profiles** are the pitch from SevenRooms, Mews and POS vendors. They are most useful when marketing consent is captured at booking.
+## One contract, two answers on ownership
 
-- **Retail bev** runs loyalty at scale. Endeavour's FY26 results report about 1.3 million monthly active users of its retail app and about 750,000 active members of its pub+ app for hotels.[^1] This is the benchmark independents compete against.
+SevenRooms’ blog of 18 June 2026 says: “Restaurants continue to solely own their first-party guest data.”[^3]
 
-- **Law:** Spam Act consent for marketing,[^2] Privacy Act for storage and disclosure. The breach notice clock would tighten to 72 hours under the second tranche of Privacy Act reforms, which was still an exposure draft when this was written.[^3] Health information is sensitive information under the Privacy Act, so treat stored dietary and health notes with care.[^4]
+Its Main Services Agreement, updated 4 February 2026, has a clause for guests who book another way. If you use the DoorDash Reservation Marketplace, “DoorDash owns all right, title and interest in all Guest Information (including personal information) that is collected independently through DDRMP”. Guest Information is defined as including “Guest preferences, Venue notes on Guests, Guest allergies and reservation details of such Guests”.[^4]
 
-## Next three years
+My read: both can be true. The blog speaks of first-party data, and the clause speaks of data collected independently through the marketplace.
 
-- First-party data replaces cookies and paid social targeting. Lists, SMS and WhatsApp carry marketing.
+## What a breach shows
 
-- AI writes segmented campaigns and surfaces lapsed regulars. Quality depends on clean data.
+Quest’s statement of 19 August said: “If you do not receive a notification from us, it is unlikely that your personal information has been affected.”[^1] Its letter of 16 September says: “Notifications are being issued in stages as we verify the specific information relevant to each affected individual.”[^2] Quest said it “identified unauthorised access to a database system arising from a vulnerability through a third-party service provider”, which the statements do not name.[^1]
 
-- Platforms offer to lend you your own guests. Check export rights.
+My read: the records were more than a year old and still held, so a deletion schedule is part of guest-data practice. Data you have deleted cannot be taken.
 
-- Consent receipts and preference centres become basic hygiene.
+## The law that applies
 
-## Accommodation vs retail
+- **Marketing messages:** the Spam Act 2003 sets the consent rules for commercial electronic messages (section 16 and Schedule 2).[^5]
 
-- **Accommodation:** guest identity documents sit beside marketing data. Separate them. Delete ID images on checkout.
+- **Breach notice:** the Privacy Act’s breach notice clock would tighten to 72 hours under the second tranche of Privacy Act reforms. A law firm’s summary of 3 September 2026 describes it as an exposure draft. I could not open the government’s own page.[^6]
 
-- **Venues:** dietary and accessibility notes are valuable and sensitive. Treat as health information.
+- **Health information** is sensitive information under the Privacy Act.[^7] My read: dietary and allergy notes on a guest record may count, so treat them with care.
 
-- **Retail bev:** age verification and loyalty segments (wine club, whisky, trade) drive repeat sales.
+- **Automated decisions:** chapter 5 covers the duty that starts on 10 December 2026.
 
-## What good looks like
+## Retail bev: loyalty at scale
 
-1. One guest record, one owner, one export route.
-2. Marketing consent captured at booking, with a clear reason.
-3. Retention rules: delete what you do not need after a set period.
-4. A simple segment set: regulars, lapsed, high spend, special occasion.
-5. A named person who answers a data request within 30 days.
+Endeavour’s FY26 results report about 1.3 million monthly active users of its retail app and about 750,000 active members of its pub+ app for hotels.[^8] My read: that is the scale of loyalty programme an independent bottle shop competes with.
 
-## Risks
+## What I would set up (my read)
 
-- Vendor lock-in on the guest list.
+- One guest record, with one owner and one export route.
 
-- Over-collection: passport numbers and birthdays you never use.
+- Marketing consent captured at booking, with a stated reason.
 
-- Staff sharing guest details over personal messaging apps.
+- A retention rule: delete what you do not need after a set period, and keep ID documents apart from marketing data.
+
+- A named person who answers a request for access to personal information.
+
+## Questions to put in writing
+
+Send these to each vendor that holds guest data.
+
+1. Which of our guest records can we export, and in what format?
+
+2. Does the vendor, or a marketplace it works with, own or keep any of those records?
+
+3. Within how many hours of confirming an incident that touches our data will you tell us, and will you update us with counts as you confirm them?
+
+4. What do you delete, and when?
+
+## What this chapter does not show
+
+- Whether the contracts you hold match the SevenRooms clause. I read one contract.
+
+- The name of Quest’s third-party provider. The statements do not give it.
+
+- Whether the 72-hour exposure draft has changed since 3 September 2026.
+
+- How long an organisation has to answer an access request. I did not check the Australian Privacy Principles on that.
+
+- The current compilation of the Privacy Act. The sensitive-information definition is from compilation 85, dated 16 December 2020.

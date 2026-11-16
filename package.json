@@ -8,7 +8,9 @@
   },
   "scripts": {
     "dev": "astro dev",
-    "build": "astro check && astro build",
+    "build": "node scripts/lint-copy.mjs && astro check && astro build",
+    "lint:copy": "node scripts/lint-copy.mjs",
+    "check:quotes": "node scripts/verify-quotes.mjs",
     "preview": "astro preview",
     "check": "astro check",
     "astro": "astro"

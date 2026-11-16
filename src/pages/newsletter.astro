@@ -1,11 +1,15 @@
 ---
 import Base from '../layouts/Base.astro';
 import Signup from '../components/Signup.astro';
+import { getWriting } from '../lib/content';
+
+// The example link appears only once there is a piece to point at.
+const [latest] = await getWriting();
 ---
 
 <Base
   title="Newsletter"
-  description="Sign up for Good Potatoes, written by David Hynes. One person, no sponsors, no affiliate links."
+  description="Good Potatoes: one claim about one vendor per issue, from its own documents, with a question to send. One person, no sponsors, no affiliate links."
   current="newsletter"
 >
   <header class="plain-head">
@@ -16,10 +20,26 @@ import Signup from '../components/Signup.astro';
       <h2 class="label" id="news-h">Good Potatoes</h2>
       <Signup id="email-newsletter" />
     </section>
-    <div class="md">
+    <div class="md indent">
       <p>
-        Good Potatoes is written by David Hynes. One person, no sponsors, no affiliate links. Your email address goes to
-        Substack, which sends the newsletter. See <a href="/privacy/">Privacy</a>.
+        Each issue makes one claim about one vendor, from that vendor’s own documents, so you can check it and use it.
+      </p>
+      <h2>What an issue holds</h2>
+      <ul>
+        <li><p>Three facts, each with its number or date.</p></li>
+        <li><p>The vendor’s own words, quoted with the document, section and date.</p></li>
+        <li><p>What the evidence does not show, and what would settle it.</p></li>
+        <li><p>One question or clause to paste into an email to the vendor.</p></li>
+      </ul>
+      {
+        latest && (
+          <p>
+            For an example, read <a href={`/writing/${latest.id}/`}>{latest.data.title}</a>.
+          </p>
+        )
+      }
+      <p>
+        Your email address goes to Substack, which sends the newsletter. <a href="/privacy/">Privacy</a> says what each party holds.
       </p>
     </div>
   </div>

@@ -17,6 +17,8 @@ Node 22.23.4 or later (`.nvmrc` pins 22.23.5) and npm.
 | `SHOW_DRAFTS=1 npm run build` | The same, with drafts included, for local review only |
 | `npm run preview` | Serve the built site locally |
 | `node scripts/ingest.mjs 05` | First conversion of raw chapter 05 into `src/content/chapters/` (see Chapters) |
+| `npm run lint:copy` | Check every published word against the writing rules (see Copy rules). `npm run build` runs it first |
+| `npm run check:quotes` | Check every quotation of three or more words against saved copies of the source pages (see Copy rules). Local only |
 
 ## Structure
 
@@ -61,6 +63,22 @@ In the text, cite a source with `[^1]`, `[^2]` and so on. The first citation put
 
 `scripts/ingest.mjs` makes a first conversion of a raw chapter (set `CHAPTER_SOURCE` to the folder that holds the raw files). The new file is a draft with no sources, so it stays out of production builds. The research pass then adds `sources`, `[^n]` markers, `draft: false` and `status: sourced`. The script will not overwrite an existing chapter file unless you pass `--force`, and it refuses chapter 27, which is private.
 
+## Copy rules
+
+Writing follows the rules in the copywriting prompt. Two scripts enforce what a machine can check.
+
+`scripts/lint-copy.mjs` fails the build on: em dashes; the banned phrases and vendor vocabulary in the writer's own voice; "it's not X, it's Y" patterns; exclamation marks and emoji; American spellings; question headlines; and any `[ANECDOTE:`, `[DAVID:`, `[VERIFY` or `[TODO` marker in published content. Text inside quotation marks is a source's own words and is exempt. For articles (`src/content/writing`) it also checks the tier word count, a three-line TL;DR whose first line starts "My read:", the three marked sections, an opening of 100 words or fewer, and a standfirst of 50 words or fewer that gives context, not provenance (no "read on" or "word for word": the Sources list carries the read dates and says quotations are verbatim). A draft gets the article-structure checks as warnings.
+
+Every article has `tier` (`brief`, 600 to 1,000 words; or `deep-dive`, 2,000 to 3,500) and `tldr` (exactly three plain-language lines) in its frontmatter. The first line is the key takeaway, what the author thinks the evidence means, and starts "My read:"; the other two are the plain facts behind it. Its body ends with three `##` sections, in this order, and the last closes the piece. The section names live in `src/config/sections.mjs`:
+
+| Heading | What it holds |
+| --- | --- |
+| `For your AI lead` | Implementation detail a CEO can skip. Shown in a marked container |
+| `What this does not show` | What the evidence does not cover, and what would settle it |
+| `Put this in writing` | One block quote the reader can paste into an email to the vendor. Shown in a box that selects whole on one click |
+
+`scripts/verify-quotes.mjs` needs saved plain-text copies of each source page in a folder outside this repository (default `~/Hospitality/_work/snapshots/<vendor>/<document>-<YYYY-MM-DD>.txt`, or set `SNAPSHOT_DIR`). It is not part of the Netlify build.
+
 ## Indexing
 
 `indexable` in `src/config/site.ts` is `false` until launch, which puts a `noindex` robots tag on every page. A single page can also set `noindex` in its frontmatter.
@@ -85,3 +103,13 @@ The form posts to `newsletter.formUrl` in `src/config/site.ts`. While that is em
 ## Deploy
 
 Netlify builds from `netlify.toml`: it runs `npm run build` and publishes `dist/`. The Node version for the build is set in the same file.
+
+## Site structure notes
+
+- **Resource index** groups chapters by `theme` (Foundations, Running the business, Venues, money and property, Brand, culture and safety). A theme with no published chapter is left out. Background chapters carry a "Background chapter" tag.
+- **Chapter pages** end with the pieces that cite them ("Pieces that go deeper"), related chapters, and previous and next chapter links. There is no "Cite this chapter" box.
+- **Chapter references in text** ("chapter 11", "chapters 11 and 17") become links through `src/plugins/rehype-chapter-links.mjs`, only to chapters that are published (or visible with `npm run dev` / `SHOW_DRAFTS=1`). After publishing a chapter, clear `.astro` and `node_modules/.astro` so other pages are rendered again. A clean build always is.
+- **Signup** shows a form only when `site.newsletter.formUrl` is set. Until then it shows one plain sentence and links to Writing and the Resource.
+- **Reading time** is computed from the Markdown body at about 230 words a minute.
+- **Link previews** (Open Graph tags), a favicon (`public/favicon.svg`) and a print stylesheet are in `Base.astro` and `site.css`.
+- **Opening notes**: a chapter may open with a Markdown blockquote (a disclaimer). It is styled as a note and the drop cap moves to the next paragraph.

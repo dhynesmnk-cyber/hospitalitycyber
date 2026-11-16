@@ -16,7 +16,7 @@ const [latest] = await getWriting();
     <div class="wrap"><h1>About</h1></div>
   </header>
   <div class="wrap plain-body">
-    <div class="md">
+    <div class="md indent">
       <p>
         I am David Hynes, in Melbourne. I read the terms and price lists behind the AI and software that run hospitality
         venues, and I write down what they say about a group’s data, its fees and what it costs to leave. I quote the
@@ -25,19 +25,43 @@ const [latest] = await getWriting();
       {
         latest && (
           <p>
-            Issue one covers Square: what its terms leave to you, and what comes out of it as CSV.
+            Issue one covers Square: what its terms say about who keeps your sales records, and what you can export.
           </p>
         )
       }
+
+      <h2>How I work</h2>
+      <ul>
+        <li>
+          <p>Every quote is word for word, with the document, the section and the date, so you can check it in two minutes.</p>
+        </li>
+        <li>
+          <p>I keep three things apart: what a document says, what I infer (marked “my read”), and what I cannot tell you.</p>
+        </li>
+        <li>
+          <p>A vendor’s marketing language is evidence. I quote it and date it. I do not use it as my own.</p>
+        </li>
+        <li>
+          <p>
+            Each piece ends with something you can paste into an email to the vendor: a question, a clause to check or a
+            number to ask for.
+          </p>
+        </li>
+      </ul>
+
       <p>
         I have no sponsors and no affiliate links. If I misread a clause, tell me and I will correct it and <a href="/updates/">date the correction</a>.
       </p>
+
+      <h2>Where I stand</h2>
       <p>
         You should know my interest. I am looking for a Head of AI role at a larger hospitality or food and beverage
         group, and I lean towards groups keeping their data in their own hands. Weigh what I write with that in mind.
       </p>
+
+      <h2>Get in touch</h2>
       <p>
-        If you run AI or operations at a group and want to talk, email me: <a href={`mailto:${site.email}`}>{site.email}</a>. My other work is at <a href={site.portfolioUrl} rel="noopener">{site.portfolioUrl}</a>
+        If you run AI or operations at a group and want to talk, email me: <a href={`mailto:${site.email}`}>{site.email}</a>. My other work is at <a href={site.portfolioUrl} rel="noopener">{site.portfolioUrl.replace('https://', '')}</a>.
       </p>
     </div>
   </div>

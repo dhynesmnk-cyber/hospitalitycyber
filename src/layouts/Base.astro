@@ -44,6 +44,17 @@ const isHome = Astro.url.pathname === '/';
     <meta name="description" content={description} />
     <link rel="canonical" href={canonical} />
     {!indexable && <meta name="robots" content="noindex" />}
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <meta name="theme-color" content="#F5EFE3" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#1B1714" media="(prefers-color-scheme: dark)" />
+    <meta name="author" content={site.author} />
+    {/* Link previews: what a reader sees when a page is pasted into an email or a chat. */}
+    <meta property="og:site_name" content={site.name} />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta name="twitter:card" content="summary" />
     <script is:inline>
       // Apply a saved colour choice before the page paints, so there is no flash.
       try {

@@ -2,10 +2,13 @@
 import Base from '../layouts/Base.astro';
 import Signup from '../components/Signup.astro';
 import Stamp from '../components/Stamp.astro';
+import Tldr from '../components/Tldr.astro';
 import { site } from '../config/site';
-import { getWriting } from '../lib/content';
+import { getChapters, getWriting } from '../lib/content';
 
-const [latest] = await getWriting();
+const writing = await getWriting();
+const [latest] = writing;
+const chapterCount = (await getChapters()).length;
 
 // What the reader needs from an AI decision. David's wording, 15 November 2026, put in the
 // second person ("you") at his request on 16 November 2026.
@@ -49,16 +52,31 @@ const needs = [
               <a href={`/writing/${latest.id}/`}>{latest.data.title}</a>
             </h3>
             <Stamp word={latest.data.draft ? 'Draft' : 'Read'} date={latest.data.pubDate} />
-            <p class="excerpt">{latest.data.description}</p>
+            <Tldr items={latest.data.tldr} />
             <p class="more">
               <a href={`/writing/${latest.id}/`}>
                 Read the piece<span class="visually-hidden">: {latest.data.title}</span>
               </a>
+              {writing.length > 1 && (
+                <a class="more-alt" href="/writing/">All {writing.length} pieces</a>
+              )}
             </p>
           </article>
         </section>
       )
     }
+
+    <section class="band reference" aria-labelledby="ref-h">
+      <h2 class="label" id="ref-h">Reference</h2>
+      <div class="band-main">
+        <h3 class="band-title"><a href="/chapters/">Hospitality Tools Resource</a></h3>
+        <p class="band-text">
+          {chapterCount > 0 ? `${chapterCount} chapters` : 'Chapters'} on the software and platforms behind Australian
+          venues. Each one lists its sources and the day I read them.
+        </p>
+        <p class="more"><a href="/chapters/">Browse the chapters</a></p>
+      </div>
+    </section>
 
     <section class="band newsletter" aria-labelledby="news-h">
       <h2 class="label" id="news-h">Newsletter</h2>
