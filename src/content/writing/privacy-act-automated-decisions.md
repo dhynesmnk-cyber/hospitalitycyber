@@ -8,7 +8,7 @@ tldr:
   - "My read: before 10 December, list every system that scores, ranks, approves or blocks a person. Your privacy policy may have to describe them."
   - "The test is a “computer program”, not AI, so the duty is not limited to AI tools. Systems installed before the date count too."
   - "It applies when a program makes, or substantially helps make, a decision that could significantly affect a person, using their personal information."
-pubDate: 2026-11-17T00:40:00Z
+pubDate: 2026-11-17T03:06:00Z
 draft: false
 chapters: ['05', '11']
 sources:
