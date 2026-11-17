@@ -1,38 +1,38 @@
 ---
 title: "Buying software: what the contract lets your vendor do"
-description: "Four hospitality software businesses changed owner or agreed a sale in about 18 months. Clauses from Lightspeed, Square and SevenRooms show what follows."
+description: "Three hospitality software businesses changed owner or agreed a sale in under a year. Clauses from Lightspeed, Square and SevenRooms show what follows."
 slug: buying-saas-vendors-contracts-and-lock-in
 number: 17
 theme: running-the-business
 status: sourced
-asOf: 2026-11-16
+asOf: 2026-11-18
 draft: false
 related: ['02', '05', '08']
 sources:
-  - title: "American Express Completes Acquisition of Tock"
-    short: "American Express on Tock"
-    publisher: "American Express"
-    url: "https://ir.americanexpress.com/news/investor-relations-news/investor-relations-news-details/2024/American-Express-Completes-Acquisition-of-Tock/default.aspx"
-    dated: "Published 15 October 2024"
-    accessed: 2026-11-16
-  - title: "DoorDash Announces Agreement to Acquire SevenRooms to Enhance Commerce Platform Offerings"
-    short: "DoorDash and SevenRooms"
-    publisher: "SevenRooms (DoorDash announcement)"
-    url: "https://sevenrooms.com/press/DoorDash-Acquires-SevenRooms/"
-    dated: "Published 6 May 2025"
-    accessed: 2026-11-16
-  - title: "Olo Enters into Definitive Agreement to be Acquired by Thoma Bravo"
-    short: "Thoma Bravo on Olo"
+  - title: "DoorDash Completes Acquisition of SevenRooms"
+    short: "DoorDash completes SevenRooms"
+    publisher: "DoorDash"
+    url: "https://about.doordash.com/en-au/news/doordash-completes-acquisition-of-sevenrooms"
+    dated: "Published 13 June 2025"
+    accessed: 2026-11-17
+  - title: "Thoma Bravo Completes Acquisition of Olo"
+    short: "Thoma Bravo completes Olo"
     publisher: "Thoma Bravo"
-    url: "https://www.thomabravo.com/press-releases/olo-enters-into-definitive-agreement-to-be-acquired-by-thoma-bravo"
-    dated: "Published 3 July 2025"
-    accessed: 2026-11-16
+    url: "https://www.thomabravo.com/press-releases/thoma-bravo-completes-acquisition-of-olo"
+    dated: "Published 12 September 2025"
+    accessed: 2026-11-17
   - title: "Lightspeed Commerce Divests Upserve U.S. Hospitality Product Line to Skyview Equity"
     short: "Lightspeed on the Upserve sale"
     publisher: "Lightspeed"
     url: "https://www.lightspeedhq.com/news/lightspeed-commerce-divests-upserve-u-s-hospitality-product-line-to-skyview-equity-transaction-sharpens-focus-on-core-growth-engines-of-retail-in-north-america-and-hospitality-in-europe/"
     dated: "Published 29 April 2026"
     accessed: 2026-11-16
+  - title: "American Express Announces Proposed Acquisition of TheFork, a Leading European Restaurant Booking Platform"
+    short: "American Express on TheFork"
+    publisher: "American Express"
+    url: "https://ir.americanexpress.com/news/investor-relations-news/investor-relations-news-details/2026/American-Express-Announces-Proposed-Acquisition-of-TheFork-a-Leading-European-Restaurant-Booking-Platform/default.aspx"
+    dated: "Published 15 June 2026"
+    accessed: 2026-11-18
   - title: "Lightspeed Service Agreement (Australia)"
     short: "Lightspeed Service Agreement"
     publisher: "Lightspeed"
@@ -69,18 +69,17 @@ sources:
     accessed: 2026-11-16
 ---
 
-Between 15 October 2024 and 29 April 2026, four hospitality software businesses changed owner or had a sale agreed: Tock, SevenRooms, Olo and Lightspeed’s Upserve line.[^1][^2][^3][^4] Your software contract decides what happens to your data, your price and your exit when that happens to your vendor. This chapter lists the four deals, then the clauses I read in three vendors’ contracts.
+Between 13 June 2025 and 29 April 2026, three hospitality software businesses changed owner or had a sale agreed: SevenRooms, Olo and Lightspeed’s Upserve line.[^1][^2][^3] Your software contract decides what happens to your data, your price and your exit when that happens to your vendor. This chapter lists the three deals, then the clauses I read in three vendors’ contracts.
 
-## Four deals in about 18 months
+## Three deals in under a year
 
 | Date | What happened |
 | --- | --- |
-| 15 October 2024 | American Express “completed the previously announced acquisition of Tock”.[^1] |
-| 6 May 2025 | DoorDash “reached an agreement to acquire SevenRooms”.[^2] |
-| 3 July 2025 | Olo “entered into a definitive agreement to be acquired by Thoma Bravo”.[^3] |
-| 29 April 2026 | Lightspeed announced the sale of its Upserve U.S. hospitality product line to Skyview Equity for “up to $81 million USD”.[^4] |
+| 13 June 2025 | DoorDash “announced it has completed the acquisition of SevenRooms”.[^1] |
+| 12 September 2025 | Thoma Bravo “announced the completion of its acquisition of Olo”.[^2] |
+| 29 April 2026 | Lightspeed announced the sale of its Upserve U.S. hospitality product line to Skyview Equity for “up to $81 million USD”.[^3] |
 
-Thoma Bravo’s release expected the Olo deal to close by the end of 2025. I did not check that it did, or that the SevenRooms deal completed.
+Tock is already owned by American Express, which on 15 June 2026 described its dining strategy as building on “successful acquisitions of digital dining platforms Resy and Tock”.[^4]
 
 ## Nine clauses worth reading before you sign
 

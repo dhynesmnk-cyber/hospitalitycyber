@@ -5,7 +5,7 @@ slug: crm-and-guest-data
 number: 11
 theme: running-the-business
 status: sourced
-asOf: 2026-11-16
+asOf: 2026-11-18
 draft: false
 related: ['05', '08', '17']
 sources:
@@ -50,10 +50,10 @@ sources:
   - title: "Privacy Act 1988"
     short: "Privacy Act 1988"
     publisher: "Federal Register of Legislation"
-    url: "https://www.legislation.gov.au/C2004A03712/2020-12-16/2020-12-16/text/original/pdf"
+    url: "https://www.legislation.gov.au/C2004A03712/latest/text"
     section: "section 6(1), definition of sensitive information"
-    dated: "Compilation No. 85, 16 December 2020"
-    accessed: 2026-11-16
+    dated: "Compilation No. 104, in force from 4 June 2026"
+    accessed: 2026-11-18
   - title: "Endeavour Group Appendix 4E and Annual Report, year ended 28 June 2026"
     short: "Endeavour Group FY26 results"
     publisher: "Endeavour Group (ASX announcement)"

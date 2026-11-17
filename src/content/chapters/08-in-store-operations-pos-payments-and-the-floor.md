@@ -5,7 +5,7 @@ slug: in-store-operations-pos-payments-and-the-floor
 number: 8
 theme: running-the-business
 status: sourced
-asOf: 2026-11-16
+asOf: 2026-11-18
 draft: false
 related: ['02', '11', '17']
 sources:
@@ -54,12 +54,6 @@ sources:
     url: "https://squareup.com/help/au/en/article/7467"
     dated: "No date shown on the page"
     accessed: 2026-11-16
-  - title: "Lightspeed to bolster Asia-Pacific presence with acquisition of Australia-based Kounta"
-    short: "BetaKit on Lightspeed and Kounta"
-    publisher: "BetaKit"
-    url: "https://betakit.com/lightspeed-to-bolster-asia-pacific-presence-with-acquisition-of-australia-based-kounta/"
-    dated: "Published 21 October 2019"
-    accessed: 2026-11-16
   - title: "Lightspeed Commerce Divests Upserve U.S. Hospitality Product Line to Skyview Equity"
     short: "Lightspeed on the Upserve sale"
     publisher: "Lightspeed"
@@ -102,13 +96,13 @@ Square’s Australian loans are repaid from card sales, and Square says the fee 
 
 ## Who owns your POS next
 
-Lightspeed agreed to buy Kounta, a cloud POS provider for hospitality businesses, in October 2019.[^8] On 29 April 2026 it announced the sale of its Upserve U.S. hospitality product line to Skyview Equity for “up to $81 million USD”, saying it would “concentrate on its two core growth engines of retail in North America and hospitality in Europe”.[^9] On 3 July 2025 Olo “entered into a definitive agreement to be acquired by Thoma Bravo”.[^10]
+On 29 April 2026 Lightspeed announced the sale of its Upserve U.S. hospitality product line to Skyview Equity for “up to $81 million USD”, saying it would “concentrate on its two core growth engines of retail in North America and hospitality in Europe”.[^8] On 3 July 2025 Olo “entered into a definitive agreement to be acquired by Thoma Bravo”.[^9]
 
 My read: when a vendor changes owner, the contract you signed moves with it. Chapter 17 sets out what one vendor’s contract says about that.
 
 ## Floor technology: one study with numbers
 
-Intouch Insight’s 2026 drive-thru study, published on 6 October 2026, tested voice AI ordering at three US brands, with data collected from June to July 2026. The AI took some or all of the order on 92 of 120 test visits and “completed 77 from beginning to end”. Its accuracy score was 90.8 per cent, up from 82.5 per cent in 2025. Nearly three in ten shoppers had to repeat part of the order.[^11]
+Intouch Insight’s 2026 drive-thru study, published on 6 October 2026, tested voice AI ordering at three US brands, with data collected from June to July 2026. The AI took some or all of the order on 92 of 120 test visits and “completed 77 from beginning to end”. Its accuracy score was 90.8 per cent, up from 82.5 per cent in 2025. Nearly three in ten shoppers had to repeat part of the order.[^10]
 
 These are US chain results. The study does not say what the 90.8 is measured against, so treat it as a signal, not a benchmark for an Australian venue.
 

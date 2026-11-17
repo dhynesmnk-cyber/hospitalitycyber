@@ -234,6 +234,17 @@ function lintMarkdown(file) {
   const masked = maskFrontmatter(raw, frontEnd).slice(0, frontEnd) + maskBody(body);
   checkStyle(file, masked);
 
+  // Current-sources rule: every source is dated 2025 or 2026, unless it is an approved instrument.
+  const srcBlock = front.split(/\n(?=sources:)/).find((s) => s.startsWith('sources:')) ?? '';
+  for (const item of srcBlock.split(/\n(?=\s+- title:)/).slice(1)) {
+    const dated = (item.match(/^\s+dated:\s*(.*)$/m) ?? [])[1] ?? '';
+    const years = (dated.match(/\b(?:19|20)\d\d\b/g) ?? []).map(Number);
+    const title = ((item.match(/title:\s*(.*)$/m) ?? [])[1] ?? '').slice(0, 70);
+    if (years.length && Math.max(...years) < 2025 && !/^\s+instrument:\s*true/m.test(item)) {
+      report(structure, file, 1, 'source dated before 2025: replace it, or mark it `instrument: true` with David’s approval', `${title} | ${dated}`);
+    }
+  }
+
   if (!isWriting) return;
 
   // Article structure.

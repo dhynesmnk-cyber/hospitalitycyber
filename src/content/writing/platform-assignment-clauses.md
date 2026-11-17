@@ -1,7 +1,7 @@
 ---
 title: "Four of five platform contracts let the vendor assign yours"
-description: "Tock, SevenRooms and Olo changed owner and Lightspeed sold Upserve in 18 months. Four of five platform contracts let the vendor assign yours unasked."
-standfirst: "In about 18 months Tock, SevenRooms and Olo were bought, and Lightspeed announced the sale of its US Upserve line, which covered about 3,200 locations. This is what five platforms’ own contracts say a sale does to yours."
+description: "SevenRooms and Olo changed owner and Lightspeed sold Upserve in under a year. Four of five platform contracts let the vendor assign yours unasked."
+standfirst: "In under a year SevenRooms and Olo were bought, and Lightspeed announced the sale of its US Upserve line, which covered about 3,200 locations. This is what five platforms’ own contracts say a sale does to yours."
 slug: platform-assignment-clauses
 tier: deep-dive
 tldr:
@@ -42,11 +42,11 @@ sources:
     section: "sections 3, 6 and 25"
     dated: "Last updated 30 June 2025"
     accessed: 2026-11-17
-  - title: "American Express Completes Acquisition of Tock"
+  - title: "American Express Announces Proposed Acquisition of TheFork, a Leading European Restaurant Booking Platform"
     publisher: "American Express"
-    url: "https://ir.americanexpress.com/news/investor-relations-news/investor-relations-news-details/2024/American-Express-Completes-Acquisition-of-Tock/default.aspx"
-    dated: "Published 15 October 2024"
-    accessed: 2026-11-17
+    url: "https://ir.americanexpress.com/news/investor-relations-news/investor-relations-news-details/2026/American-Express-Announces-Proposed-Acquisition-of-TheFork-a-Leading-European-Restaurant-Booking-Platform/default.aspx"
+    dated: "Published 15 June 2026"
+    accessed: 2026-11-18
   - title: "DoorDash Completes Acquisition of SevenRooms"
     publisher: "DoorDash"
     url: "https://about.doordash.com/en-au/news/doordash-completes-acquisition-of-sevenrooms"
@@ -66,11 +66,9 @@ sources:
 
 Your booking or ordering platform can change owner without a word of your contract changing, because most of these contracts already allow for it. Tock’s merchant terms say: “Tock may assign these Terms or any Order Form at any time without Merchant's consent.”[^1] SevenRooms, Lightspeed and Olo’s terms for its Omnivore software allow assignment without consent on a merger or sale.[^2][^3][^4] Square’s terms bar you from assigning yours and are silent on Square’s.[^5] My read: the clause that matters at renewal is the one most groups never read.
 
-## Four new owners in about 18 months
+## Three sales in under a year
 
-How often does this happen? Four times since October 2024:
-
-- 15 October 2024: American Express “completed the previously announced acquisition of Tock”.[^6]
+How often does this happen? Tock is already owned by American Express, which on 15 June 2026 said its dining strategy builds on “successful acquisitions of digital dining platforms Resy and Tock”.[^6] Three sales since June 2025:
 
 - 13 June 2025: DoorDash “announced it has completed the acquisition of SevenRooms”.[^7]
 
@@ -84,7 +82,7 @@ The releases do not say what changed for customers. The contracts below say what
 
 | Platform, and its owner since the deal | Can the vendor assign without your consent? | Can you? |
 | --- | --- | --- |
-| Tock (American Express since October 2024) | Yes, “at any time”[^1] | Only to a successor to substantially all of your business[^1] |
+| Tock (owned by American Express) | Yes, “at any time”[^1] | Only to a successor to substantially all of your business[^1] |
 | SevenRooms (DoorDash since June 2025) | On a merger, consolidation or sale of substantially all its stock or assets, with notice “promptly following”[^2] | Yes, on the same terms[^2] |
 | Lightspeed (Australian agreement) | To a merger partner, a parent or subsidiary, or the successor in a sale of substantially all of it[^3] | Not without Lightspeed’s consent[^3] |
 | Olo, Omnivore software (Thoma Bravo since September 2025) | To a buyer of substantially all, or an affiliate, if the assignee accepts the obligations in writing[^4] | Yes, on the same terms[^4] |
@@ -194,7 +192,7 @@ My read, in order:
 
 - Olo’s main ordering contracts. I read only the published Omnivore terms.
 
-- Whether any of the four sales changed customers’ terms. The releases do not say.
+- Whether any of the three sales changed customers’ terms. The releases do not say.
 
 - How a court would read a contract that is silent on the vendor’s right to assign, as Square’s is. This is not legal advice.
 

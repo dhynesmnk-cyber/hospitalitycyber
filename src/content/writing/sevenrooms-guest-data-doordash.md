@@ -24,12 +24,6 @@ sources:
     url: "https://sevenrooms.com/blog/guest-data-sevenrooms/"
     dated: "Published 18 June 2026"
     accessed: 2026-11-17
-  - title: "Client Terms & Conditions"
-    publisher: "SevenRooms"
-    url: "https://sevenrooms.com/generalterms/"
-    section: "section 5.2"
-    dated: "Updated 1 June 2022"
-    accessed: 2026-11-17
   - title: "DoorDash Completes Acquisition of SevenRooms"
     publisher: "DoorDash"
     url: "https://about.doordash.com/en-au/news/doordash-completes-acquisition-of-sevenrooms"
@@ -43,7 +37,7 @@ If your venues take bookings through DoorDash’s reservation marketplace, Seven
 
 What about guests who book directly? Section 4.2 covers them: “As between the parties, Client owns all right, title and interest in, and is solely responsible for Client Information.”[^1] Section 4.3 then begins “Notwithstanding anything to the contrary in Section 4.2” and gives DoorDash the guest information collected independently through the marketplace.
 
-DoorDash completed its purchase of SevenRooms on 13 June 2025.[^4] So the company named in section 4.3 also owns the vendor.
+DoorDash completed its purchase of SevenRooms on 13 June 2025.[^3] So the company named in section 4.3 also owns the vendor.
 
 Guest Information is defined as including “Guest preferences, Venue notes on Guests, Guest allergies and reservation details of such Guests”.[^1] In plain terms: for a marketplace booking, the allergy note may sit in a record DoorDash owns.
 
@@ -56,10 +50,6 @@ Section 4.5 lets SevenRooms and its affiliates use “aggregated, de-personalize
 In plain terms: once de-personalised, what your guests generate can feed SevenRooms’ new products. The agreement does not use the words “artificial intelligence”, “machine learning” or “train”. Whether section 4.5 reaches model training, the text does not say.
 
 Section 11.12 lets SevenRooms “update this Agreement” on written notice of material updates “at least thirty (30) days prior to the date the updated version is effective”, with an exception for changes in law or from “critical service providers”.[^1]
-
-## The 2022 terms had no marketplace clause
-
-An older SevenRooms terms page, “Updated June 1, 2022”, says the client owns “any information specific to a Venue that is uploaded by Users to the Platform or otherwise made available by Client to SevenRooms”. It does not use the term DDRMP, and its mentions of DoorDash concern delivery.[^3] Which document governs you depends on your order form.
 
 ## For your AI lead
 

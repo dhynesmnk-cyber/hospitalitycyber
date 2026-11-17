@@ -24,6 +24,7 @@ sources:
     section: "sections 13, 14, 15, 18 and 41"
     dated: "Republication No 6, effective 23 June 2021"
     accessed: 2026-11-17
+    instrument: true
   - title: "Surveillance Devices Act 1999"
     publisher: "Victorian Legislation"
     url: "https://www.legislation.vic.gov.au/in-force/acts/surveillance-devices-act-1999"

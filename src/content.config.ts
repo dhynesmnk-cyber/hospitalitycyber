@@ -24,6 +24,10 @@ const source = z.object({
   section: z.string().optional(),
   dated: z.string(),
   accessed: z.coerce.date(),
+  // Current-sources rule (David, 18 Nov 2026): a source dated before 2025 fails the lint unless it
+  // is an instrument with no newer edition (a statute, treaty text or contract page that is the
+  // version in force on the read date). Set only with David's approval.
+  instrument: z.boolean().optional(),
 });
 
 const writing = defineCollection({

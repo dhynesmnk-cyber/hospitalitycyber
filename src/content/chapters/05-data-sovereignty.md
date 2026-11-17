@@ -15,6 +15,7 @@ sources:
     url: "https://www.law.cornell.edu/uscode/text/18/2713"
     dated: "Added 23 March 2018 (Pub. L. 115-141)"
     accessed: 2026-11-16
+    instrument: true
   - title: "Tech's 'Sovereignty Washing' in Europe Will Ripple in the Global South"
     short: "Lawfare, Sukumar"
     publisher: "Lawfare (Arun M. Sukumar)"
@@ -55,6 +56,7 @@ sources:
     section: "Schedule 1, Parts 6 and 15"
     dated: "Assented to 10 December 2024"
     accessed: 2026-11-16
+    instrument: true
   - title: "Square Generative AI Terms"
     short: "Square Generative AI Terms"
     publisher: "Square"

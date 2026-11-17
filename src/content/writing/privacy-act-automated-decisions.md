@@ -18,6 +18,7 @@ sources:
     section: "section 2 and Schedule 1, Part 15, items 87 to 89"
     dated: "Assented to 10 December 2024 (as made)"
     accessed: 2026-11-16
+    instrument: true
   - title: "Privacy Act 1988: versions"
     publisher: "Federal Register of Legislation"
     url: "https://www.legislation.gov.au/C2004A03712/latest/versions"

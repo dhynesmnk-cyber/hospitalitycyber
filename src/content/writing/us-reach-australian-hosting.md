@@ -18,12 +18,14 @@ sources:
     url: "https://www.law.cornell.edu/uscode/text/18/2713"
     dated: "Current text of the US Code"
     accessed: 2026-11-17
+    instrument: true
   - title: "Data Access Agreement (Notice of Commencement of Agreement between the Government of Australia and the Government of the United States of America on Access to Electronic Data for the Purpose of Countering Serious Crime) Instrument 2024"
     short: "Notice of commencement, F2024N00141"
     publisher: "Federal Register of Legislation"
     url: "https://www.legislation.gov.au/F2024N00141/asmade/2024-02-14/text/original/pdf"
     dated: "Dated 9 February 2024, registered 14 February 2024"
     accessed: 2026-11-17
+    instrument: true
   - title: "Agreement between the Government of Australia and the Government of the United States of America on Access to Electronic Data for the Purpose of Countering Serious Crime"
     short: "Australia-US CLOUD Act Agreement"
     publisher: "Department of Home Affairs (signed text, PDF)"
@@ -31,6 +33,7 @@ sources:
     section: "Articles 3 and 4"
     dated: "Signed 15 December 2021"
     accessed: 2026-11-17
+    instrument: true
   - title: "Australia-US CLOUD Act Agreement"
     publisher: "Department of Home Affairs"
     url: "https://www.homeaffairs.gov.au/about-us/our-portfolios/national-security/lawful-access-telecommunications/australia-united-states-cloud-act-agreement"

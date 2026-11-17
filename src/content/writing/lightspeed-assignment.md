@@ -1,7 +1,7 @@
 ---
 title: "Lightspeed can hand your contract to a buyer without asking"
-description: "Lightspeed’s Australian agreement lets it assign your contract without your consent, and four hospitality software deals came in about 18 months."
-standfirst: "Tock, SevenRooms and Olo were bought by larger companies, and Lightspeed agreed to sell its US Upserve line, all in about 18 months. If your vendor is next, this is what its contract lets it do with yours."
+description: "Lightspeed’s Australian agreement lets it assign your contract without your consent, and three hospitality software deals came in under a year."
+standfirst: "SevenRooms and Olo were bought by larger companies, and Lightspeed agreed to sell its US Upserve line, all in under a year. If your vendor is next, this is what its contract lets it do with yours."
 slug: lightspeed-assignment
 tier: brief
 tldr:
@@ -18,11 +18,11 @@ sources:
     section: "clauses 12.2, 13.4 and 17"
     dated: "Last updated 26 February 2026"
     accessed: 2026-11-17
-  - title: "American Express Completes Acquisition of Tock"
+  - title: "American Express Announces Proposed Acquisition of TheFork, a Leading European Restaurant Booking Platform"
     publisher: "American Express"
-    url: "https://ir.americanexpress.com/news/investor-relations-news/investor-relations-news-details/2024/American-Express-Completes-Acquisition-of-Tock/default.aspx"
-    dated: "Published 15 October 2024"
-    accessed: 2026-11-17
+    url: "https://ir.americanexpress.com/news/investor-relations-news/investor-relations-news-details/2026/American-Express-Announces-Proposed-Acquisition-of-TheFork-a-Leading-European-Restaurant-Booking-Platform/default.aspx"
+    dated: "Published 15 June 2026"
+    accessed: 2026-11-18
   - title: "DoorDash Completes Acquisition of SevenRooms"
     publisher: "DoorDash"
     url: "https://about.doordash.com/en-au/news/doordash-completes-acquisition-of-sevenrooms"
@@ -48,11 +48,9 @@ What can a new owner do once it holds your contract? Clause 12.2 lets Lightspeed
 
 In plain terms: object inside the notice period or lose the penalty-free exit, and once you leave, your data can be deleted at once.
 
-## Four deals in about 18 months
+## Three deals in under a year
 
-How often do hospitality software vendors change hands? Often enough to plan for:
-
-- 15 October 2024: American Express “completed the previously announced acquisition of Tock”.[^2]
+How often do hospitality software vendors change hands? Often enough to plan for. Tock is already owned by American Express, which on 15 June 2026 said its dining strategy builds on “successful acquisitions of digital dining platforms Resy and Tock”.[^2] Three deals since:
 
 - 13 June 2025: DoorDash “announced it has completed the acquisition of SevenRooms”.[^3]
 
