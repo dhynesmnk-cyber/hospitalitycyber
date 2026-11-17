@@ -1,15 +1,18 @@
 ---
 import Base from '../layouts/Base.astro';
 import Signup from '../components/Signup.astro';
+import { site } from '../config/site';
 import { getWriting } from '../lib/content';
 
-// The example link appears only once there is a piece to point at.
+// The "start with" link appears only once there is a piece to point at.
 const [latest] = await getWriting();
+// "Substack" becomes a link once the publication address is set in site.ts.
+const substack = site.newsletter.publicationUrl;
 ---
 
 <Base
   title="Newsletter"
-  description="Good Potatoes: one claim about one vendor per issue, from its own documents, with a question to send. One person, no sponsors, no affiliate links."
+  description="Good Potatoes by email, free: what hospitality vendors’ own contracts say about your data and fees, with an email to send back. Same pieces as this site."
   current="newsletter"
 >
   <header class="plain-head">
@@ -21,25 +24,32 @@ const [latest] = await getWriting();
       <Signup id="email-newsletter" />
     </section>
     <div class="md indent">
-      <p>
-        Each issue makes one claim about one vendor, from that vendor’s own documents, so you can check it and use it.
-      </p>
-      <h2>What an issue holds</h2>
+      {
+        substack ? (
+          <p>
+            Good Potatoes is free, on this site and on <a href={substack} rel="noopener">Substack</a>. Every piece goes to
+            both, in full.
+          </p>
+        ) : (
+          <p>Good Potatoes is free. Every piece is published here in full.</p>
+        )
+      }
+      <h2>What each piece gives you</h2>
       <ul>
-        <li><p>Three facts, each with its number or date.</p></li>
-        <li><p>The vendor’s own words, quoted with the document, section and date.</p></li>
-        <li><p>What the evidence does not show, and what would settle it.</p></li>
-        <li><p>One question or clause to paste into an email to the vendor.</p></li>
+        <li><p>My read in one line, and the two facts behind it.</p></li>
+        <li><p>The source’s own words, with the document, clause and date, so you can check them yourself.</p></li>
+        <li><p>What the evidence does not show, said plainly.</p></li>
+        <li><p>An email to the vendor, ready to paste.</p></li>
       </ul>
       {
         latest && (
           <p>
-            For an example, read <a href={`/writing/${latest.id}/`}>{latest.data.title}</a>.
+            Start with <a href={`/writing/${latest.id}/`}>{latest.data.title}</a>.
           </p>
         )
       }
       <p>
-        Your email address goes to Substack, which sends the newsletter. <a href="/privacy/">Privacy</a> says what each party holds.
+        Substack sends the emails and holds your address. <a href="/privacy/">Privacy</a> has the rest.
       </p>
     </div>
   </div>

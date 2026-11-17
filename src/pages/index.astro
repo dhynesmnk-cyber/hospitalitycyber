@@ -3,11 +3,12 @@ import Base from '../layouts/Base.astro';
 import Signup from '../components/Signup.astro';
 import Stamp from '../components/Stamp.astro';
 import Tldr from '../components/Tldr.astro';
-import { site } from '../config/site';
 import { getChapters, getWriting } from '../lib/content';
 
 const writing = await getWriting();
-const [latest] = writing;
+const [latest, ...older] = writing;
+// Under the lead piece, the next few headlines, so a reader has more than one way in.
+const more = older.slice(0, 3);
 const chapterCount = (await getChapters()).length;
 
 // What the reader needs from an AI decision. David's wording, 15 November 2026, put in the
@@ -23,13 +24,12 @@ const needs = [
 
 <Base
   title="Good Potatoes, by David Hynes"
-  description="Judge AI like any other spend: return, risk, evidence. A working read for CEOs and AI strategy leads."
+  description="Judge AI like any other spend: return, risk, evidence. Info and articles on your AI ROI, from hospitality vendors’ own terms, quoted and dated."
 >
   <section class="masthead">
     <div class="wrap">
       <h1>Judge AI like any other spend: return, risk, evidence.</h1>
-      <p class="dek">A working read for CEOs and AI strategy leads.</p>
-      <p class="byline">{site.byline}</p>
+      <p class="dek">Info and articles on your AI ROI.</p>
     </div>
   </section>
 
@@ -57,10 +57,18 @@ const needs = [
               <a href={`/writing/${latest.id}/`}>
                 Read the piece<span class="visually-hidden">: {latest.data.title}</span>
               </a>
-              {writing.length > 1 && (
-                <a class="more-alt" href="/writing/">All {writing.length} pieces</a>
-              )}
             </p>
+            {more.length > 0 && (
+              <div class="more-pieces">
+                <h3 class="more-pieces-label">More pieces</h3>
+                <ul class="more-pieces-list" role="list">
+                  {more.map((p) => (
+                    <li><a href={`/writing/${p.id}/`}>{p.data.title}</a></li>
+                  ))}
+                </ul>
+                <p class="more"><a href="/writing/">All {writing.length} pieces</a></p>
+              </div>
+            )}
           </article>
         </section>
       )

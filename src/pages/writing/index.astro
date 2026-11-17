@@ -5,21 +5,26 @@ import Tldr from '../../components/Tldr.astro';
 import { getWriting } from '../../lib/content';
 
 const pieces = await getWriting();
+const count = `${pieces.length} ${pieces.length === 1 ? 'piece' : 'pieces'} so far.`;
 ---
 
 <Base
   title="Writing"
-  description="Pieces by David Hynes on what AI and software vendors say about a venue group's data, read from their own terms and dated."
+  description="What hospitality vendors’ contracts, price lists and statements say about your group. Each piece is dated and ends with an email to send back."
   current="writing"
 >
   <header class="plain-head">
     <div class="wrap"><h1>Writing</h1></div>
   </header>
   <div class="wrap plain-body">
-    <p class="band-intro indent">
-      Each piece makes one claim about one vendor, from that vendor’s own documents. It quotes them word for word, with
-      the date, and ends with something you can paste into an email to the vendor.
-    </p>
+    {
+      pieces.length > 0 && (
+        <p class="band-intro indent">
+          {count} Each takes one claim and checks it against the source’s own paperwork, from contracts and price lists
+          to breach notices and the law. Each ends with an email you can send.
+        </p>
+      )
+    }
     {
       pieces.length === 0 ? (
         <p class="empty indent">Nothing is published here yet.</p>

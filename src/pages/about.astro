@@ -3,7 +3,7 @@ import Base from '../layouts/Base.astro';
 import { site } from '../config/site';
 import { getWriting } from '../lib/content';
 
-// The sentence about issue one appears only once there is a piece to point at.
+// The "start with" sentence appears only once there is a piece to point at.
 const [latest] = await getWriting();
 ---
 
@@ -25,7 +25,7 @@ const [latest] = await getWriting();
       {
         latest && (
           <p>
-            Issue one covers Square: what its terms say about who keeps your sales records, and what you can export.
+            Start with the newest piece: <a href={`/writing/${latest.id}/`}>{latest.data.title}</a>.
           </p>
         )
       }
